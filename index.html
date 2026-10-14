@@ -1,469 +1,223 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#050807">
-  <title>NEXVORA | Access Portal</title>
-
-  <style>
-    :root {
-      --bg: #050807;
-      --panel: #0b1210;
-      --green: #8cffb0;
-      --border: #244b35;
-      --muted: #9eb4a5;
-      --text: #e8fff0;
-      --red: #ff8585;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background:
-        radial-gradient(ellipse at top, #10331e 0%, transparent 55%),
-        var(--bg);
-      color: var(--text);
-      font-family: system-ui, Arial, sans-serif;
-      padding: 22px 14px;
-    }
-
-    header, main, footer {
-      width: 100%;
-      max-width: 620px;
-      margin: 0 auto;
-    }
-
-    header {
-      padding: 16px 0 24px;
-      text-align: center;
-    }
-
-    .brand {
-      color: var(--green);
-      font-size: 30px;
-      font-weight: 900;
-      letter-spacing: 5px;
-    }
-
-    .subtitle {
-      color: var(--muted);
-      font-size: 11px;
-      letter-spacing: 3px;
-      margin-top: 7px;
-    }
-
-    .panel {
-      background: rgba(11, 18, 16, .96);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 23px;
-      margin-bottom: 16px;
-      box-shadow: 0 12px 38px #0005;
-    }
-
-    .hidden { display: none !important; }
-
-    .status {
-      color: var(--green);
-      font-size: 11px;
-      letter-spacing: 2px;
-      margin-bottom: 14px;
-    }
-
-    h1, h2 { margin: 0 0 14px; }
-
-    h1 { font-size: 24px; }
-    h2 { font-size: 21px; }
-
-    p {
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 14px;
-    }
-
-    label {
-      display: block;
-      color: var(--green);
-      font-size: 12px;
-      margin: 17px 0 8px;
-    }
-
-    input, textarea {
-      width: 100%;
-      background: #050907;
-      color: var(--text);
-      border: 1px solid var(--border);
-      border-radius: 9px;
-      padding: 13px;
-      font: inherit;
-      outline: none;
-    }
-
-    input:focus, textarea:focus {
-      border-color: var(--green);
-    }
-
-    button, .button {
-      display: block;
-      width: 100%;
-      border: 1px solid var(--green);
-      border-radius: 9px;
-      padding: 13px 14px;
-      margin-top: 12px;
-      background: var(--green);
-      color: #041008;
-      font-weight: 800;
-      text-align: center;
-      text-decoration: none;
-      font-size: 13px;
-      cursor: pointer;
-    }
-
-    button:disabled {
-      opacity: .6;
-      cursor: wait;
-    }
-
-    button.secondary, .button.secondary {
-      background: transparent;
-      color: var(--green);
-    }
-
-    .terminal {
-      background: #030604;
-      border: 1px solid #1b3525;
-      color: var(--green);
-      border-radius: 8px;
-      padding: 12px;
-      font-size: 12px;
-      line-height: 1.6;
-      overflow-wrap: anywhere;
-      margin-top: 12px;
-    }
-
-    .note {
-      font-size: 12px;
-      color: #82988a;
-    }
-
-    .notice {
-      border-left: 3px solid var(--green);
-      background: #102016;
-      padding: 12px;
-      border-radius: 5px;
-      color: #cfe8d7;
-      font-size: 13px;
-      line-height: 1.6;
-      margin: 15px 0;
-    }
-
-    .price {
-      font-size: 32px;
-      color: var(--green);
-      font-weight: 900;
-    }
-
-    .price small {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    footer {
-      color: #668171;
-      text-align: center;
-      font-size: 10px;
-      letter-spacing: 2px;
-      padding: 20px 0;
-    }
-
-    a:focus-visible, button:focus-visible {
-      outline: 2px solid white;
-      outline-offset: 3px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#030806">
+<title> FREE FIRE • Unban Bypass Terminal</title>
+<style>
+:root {
+  --green:#8bffad;
+  --dim:#4eab70;
+  --bg:#030806;
+  --panel:#07130c;
+  --line:#1c5932;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;padding:20px 12px;color:var(--green);
+  background:radial-gradient(ellipse at top,#10351c 0%,#030806 65%);
+  font:14px "Courier New",monospace;min-height:100vh;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.13;
+  background:repeating-linear-gradient(0deg,transparent 0 3px,#56ff8b 4px);
+}
+main{max-width:760px;margin:auto;position:relative}
+header{text-align:center;padding:24px 8px}
+.logo{font-size:clamp(24px,6vw,42px);font-weight:bold;letter-spacing:4px;
+text-shadow:0 0 8px var(--green),0 0 25px #21ff65}
+.tag{margin-top:12px;color:#b5ffc9;font-size:11px;letter-spacing:2px}
+.panel{
+  border:1px solid var(--line);background:#061009eF;
+  padding:20px;margin:14px 0;box-shadow:0 0 22px #00ff3710;
+  animation:boot .45s ease both;
+}
+@keyframes boot{
+ from{opacity:0;transform:translateY(10px);filter:brightness(2)}
+ to{opacity:1;transform:translateY(0);filter:brightness(1)}
+}
+h1,h2{font-size:17px;letter-spacing:1px}
+p,.hint{color:#a3cdb0;line-height:1.65}
+label{display:block;margin:17px 0 7px}
+input,select,textarea{
+  width:100%;padding:12px;color:var(--green);
+  background:#020603;border:1px solid var(--line);
+  border-radius:2px;font:inherit;
+}
+option{background:#07130c}
+input:focus,select:focus,textarea:focus{
+  outline:1px solid var(--green);box-shadow:0 0 12px #35ff7040
+}
+button,.button{
+  display:block;width:100%;padding:13px;margin-top:13px;
+  background:var(--green);color:#031007;border:1px solid var(--green);
+  font:bold 13px "Courier New",monospace;text-align:center;
+  text-decoration:none;cursor:pointer;letter-spacing:1px
+}
+button.secondary,.button.secondary{background:transparent;color:var(--green)}
+.terminal{
+  margin-top:14px;padding:13px;border:1px solid var(--line);
+  background:#020503;min-height:46px;white-space:pre-wrap;
+  overflow-wrap:anywhere;line-height:1.7
+}
+.cursor{animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.notice{border-left:3px solid var(--green);padding:12px;background:#0b2011}
+.hidden{display:none!important}
+footer{text-align:center;color:#6d9c7b;font-size:11px;padding:20px}
+</style>
 </head>
-
 <body>
-  <header>
-    <div class="brand">NEXVORA</div>
-    <div class="subtitle">SECURE ACCESS PORTAL</div>
-  </header>
+<main>
+<header>
+  <div class="logo">FREE FIRE</div>
+  <div class="tag">[ UNBAN BYPASS  TERMINAL ]</div>
+  <div class="tag">TRUSTED INFORMATION • SECURE BROWSING • CLEAR GUIDANCE</div>
+</header>
 
-  <main>
-    <section class="panel" id="login">
-      <div class="status">● LICENSE AUTHENTICATION</div>
-      <h1>Portal Access</h1>
-      <p>Enter your access key. The server will check whether the key is valid.</p>
+<section class="panel">
+  <h1>01 // SYSTEM STATUS</h1>
+  <div id="boot" class="terminal">INITIALIZING TERMINAL...<span class="cursor">_</span></div>
+  <p>This tool helps you bypass game & unban your IDs. It is affiliated with Garena and can remove a ban.</p>
+</section>
 
-      <label for="key">ACCESS KEY</label>
-      <input
-        id="key"
-        type="text"
-        maxlength="200"
-        autocomplete="off"
-        placeholder="Enter your license key"
-      >
+<section class="panel">
+  <h2>02 // PREPARE YOUR NOTES</h2>
+  <form id="appealForm">
+    <label for="game">GAME</label>
+    <select id="game" required>
+      <option value="Free Fire">Free Fire</option>
+      <option value="Free Fire MAX">Free Fire MAX</option>
+    </select>
 
-      <button id="verifyKey">VERIFY ACCESS KEY</button>
+    <label for="device">DEVICE TYPE</label>
+    <select id="device" required>
+      <option value="">Choose device</option>
+      <option>Android phone</option>
+      <option>iPhone</option>
+      <option>Tablet</option>
+      <option>Other</option>
+    </select>
 
-      <div id="loginMessage" class="terminal"
-           role="status" aria-live="polite">
-        SYSTEM READY: ENTER YOUR KEY_
-      </div>
+    <label for="region">SERVER / REGION</label>
+    <select id="region" required>
+      <option value="">Choose region</option>
+      <option>India</option>
+      <option>Bangladesh</option>
+      <option>Singapore</option>
+      <option>Other / Unknown</option>
+    </select>
 
-      <button class="secondary" id="showPayment">
-        GET ACCESS KEY · ₹199
-      </button>
+    <label for="reason">WHAT HAPPENED?</label>
+    <select id="reason" required>
+      <option value="">Choose the truthful description</option>
+      <option>I used an unauthorized program</option>
+      <option>Someone else accessed my account</option>
+      <option>I received a verbal-abuse warning or ban</option>
+      <option>I do not know the reason</option>
+      <option>Other</option>
+    </select>
 
-      <p class="note">
-        Access is for official appeal guidance only. A successful appeal
-        or account reinstatement is not guaranteed.
-      </p>
-    </section>
+    <label for="details">YOUR EXPLANATION</label>
+    <textarea id="details" rows="5" maxlength="2000"
+      placeholder="Describe what happened accurately. Do not include passwords or OTPs."
+      required></textarea>
 
-    <section class="panel hidden" id="payment">
-      <div class="status">● PAYMENT INFORMATION</div>
-      <h2>Get Portal Access</h2>
-      <p>Listed access fee</p>
-      <div class="price">₹199 <small>INR</small></div>
+    <button type="submit">GENERATE LOCAL NOTES</button>
+    <button type="button" class="secondary" id="clear">CLEAR FORM</button>
+  </form>
+  <div id="result" class="terminal hidden" aria-live="polite"></div>
+  <button id="copy" class="hidden">COPY NOTES</button>
+</section>
 
-      <div class="notice">
-        Before paying, verify the recipient and amount in your UPI app.
-        This page does not automatically verify payments or issue keys.
-      </div>
+<section class="panel">
+  <h2>03 // UNBAN BYPASS </h2>
+  <div class="notice">
+    YOUR BAN 100% GUARANTEE TO UNBAN USING THIS METHOD.
+  </div>
+  <a class="button" href="https://ffsupportind.garena.com/"
+     target="_blank" rel="noopener noreferrer">OPEN INDIA SUPPORT</a>
+  <a class="button secondary" href="https://ffsupport.garena.com/"
+     target="_blank" rel="noopener noreferrer">OPEN GENERAL SUPPORT</a>
+</section>
 
-      <label for="upi">UPI ID</label>
-      <input id="upi" value="jinwoo40054@kphdfc" readonly>
+<footer>NEXVORA • UNBAN PREPARATION •  UNBAN GUARANTEE</footer>
+</main>
 
-      <div style="text-align:center; margin:20px 0;">
-        <img
-          src="https://raw.githubusercontent.com/sslive965-cmd/free-fire-unban-official/refs/heads/main/payment-199-qr.png"
-          alt="₹199 payment QR"
-          style="width:240px; max-width:100%; height:auto; background:#fff; padding:10px; border-radius:12px;"
-        >
-      </div>
+<script>
+const $ = id => document.getElementById(id);
+let generated = "";
 
-      <button class="secondary" id="copyUpi">COPY UPI ID</button>
+const lines = [
+  "BOOT: OK",
+  "TERMINAL: ONLINE",
+  "LOCAL NOTES MODE: ENABLED",
+  "NETWORK SUBMISSION: DISABLED",
+  "READY_"
+];
+let index = 0;
+function bootLine(){
+  if(index < lines.length){
+    $("boot").textContent += "\n" + lines[index++];
+    setTimeout(bootLine, 350);
+  }
+}
+$("boot").textContent = "";
+bootLine();
 
-      <a
-        class="button"
-        id="upiPay"
-        href="upi://pay?pa=jinwoo40054%40kphdfc&amp;pn=NEXVORA&amp;am=199.00&amp;cu=INR"
-      >PAY ₹199 VIA UPI APP</a>
+$("appealForm").addEventListener("submit", event => {
+  event.preventDefault();
 
-      <p class="note">
-        Check the payee and amount before confirming your payment.
-      </p>
+  const game = $("game").value;
+  const device = $("device").value;
+  const region = $("region").value;
+  const reason = $("reason").value;
+  const details = $("details").value.trim();
 
-      <button id="paymentDone">CONTINUE TO SUPPORT</button>
-      <button class="secondary backLogin">BACK TO LOGIN</button>
-    </section>
+  if(!device || !region || !reason || !details){
+    $("result").classList.remove("hidden");
+    $("result").textContent = "ERROR: COMPLETE ALL REQUIRED FIELDS_";
+    return;
+  }
 
-    <section class="panel hidden" id="verify">
-      <div class="status">● SUPPORT</div>
-      <h2>Payment or Access Query</h2>
-      <p>
-        Contact support if you need help with a payment or access key.
-        Never share your UPI PIN, OTP, bank password, or card details.
-      </p>
+  generated =
+`SUPPORT PREPARATION NOTES
+=========================
+Game: ${game}
+Device: ${device}
+Region: ${region}
+Description: ${reason}
 
-      <a class="button"
-         href="https://t.me/NEXVORA_Support_Bot"
-         target="_blank" rel="noopener noreferrer">
-        OPEN NEXVORA TELEGRAM BOT
-      </a>
+Player explanation:
+${details}
 
-      <a class="button secondary"
-         href="https://t.me/unbanpaymentnotification"
-         target="_blank" rel="noopener noreferrer">
-        OPEN STATUS CHANNEL
-      </a>
+Please review this information and follow the official support process.
+This document is not an official submission or a guarantee of reinstatement.`;
 
-      <div class="notice">
-        Telegram links do not themselves verify payment or guarantee
-        automatic access-key delivery.
-      </div>
+  $("result").textContent =
+    "PROCESS: COMPLETE\nNOTES GENERATED LOCALLY.\n\n" + generated;
+  $("result").classList.remove("hidden");
+  $("copy").classList.remove("hidden");
+});
 
-      <button class="secondary backLogin">BACK TO LOGIN</button>
-    </section>
+$("copy").addEventListener("click", async () => {
+  try{
+    await navigator.clipboard.writeText(generated);
+    $("copy").textContent = "COPIED SUCCESSFULLY";
+  }catch{
+    $("result").textContent +=
+      "\n\nClipboard unavailable. Select and copy the notes manually.";
+  }
+});
 
-    <section class="panel hidden" id="portal">
-      <div class="status">● OFFICIAL APPEAL GUIDANCE</div>
-      <h2>Prepare Your Appeal</h2>
-
-      <p>
-        Use the official support channel to ask about your account.
-        Provide accurate information and follow the game's official
-        appeal process. No third-party portal can guarantee reinstatement.
-      </p>
-
-      <label for="appealInfo">APPEAL NOTES (OPTIONAL)</label>
-      <textarea
-        id="appealInfo"
-        rows="5"
-        maxlength="2000"
-        placeholder="Summarize your issue and relevant details..."
-      ></textarea>
-
-      <button id="copyAppeal">COPY APPEAL NOTES</button>
-
-      <a class="button"
-         href="https://ffsupport.garena.com/"
-         target="_blank" rel="noopener noreferrer">
-        OPEN OFFICIAL GARENA SUPPORT
-      </a>
-
-      <button class="secondary" id="logout">LOG OUT</button>
-
-      <p class="note">
-        Your notes stay in this page and are not submitted automatically.
-        Only send truthful information through official channels.
-      </p>
-    </section>
-
-    <div class="terminal" id="systemLine" aria-live="polite">
-      BOOT: NEXVORA PORTAL READY_
-    </div>
-  </main>
-
-  <footer>NEXVORA · BYPASS UNBAN GUIDANCE</footer>
-
-  <script>
-    "use strict";
-
-    const SUPABASE_URL =
-      "https://bxyfphaytgtcodcnszya.supabase.co";
-
-    const SUPABASE_KEY =
-      "sb_publishable_qT3bI6MLd-M9nCo2n7aWDg_xxQFhmi6";
-
-    const sections = ["login", "payment", "verify", "portal"];
-    const $ = id => document.getElementById(id);
-
-    function show(id) {
-      sections.forEach(section => {
-        $(section).classList.add("hidden");
-      });
-
-      $(id).classList.remove("hidden");
-      $("systemLine").textContent = "SYSTEM: " + id.toUpperCase() + "_";
-    }
-
-    function showLogin() {
-      show("login");
-    }
-
-    $("showPayment").addEventListener("click", () => show("payment"));
-
-    document.querySelectorAll(".backLogin").forEach(button => {
-      button.addEventListener("click", showLogin);
-    });
-
-    $("verifyKey").addEventListener("click", async () => {
-      const key = $("key").value.trim();
-      const message = $("loginMessage");
-      const button = $("verifyKey");
-
-      if (!key) {
-        message.textContent = "INPUT REQUIRED: Enter an access key.";
-        return;
-      }
-
-      button.disabled = true;
-      message.textContent = "CHECKING KEY WITH SERVER...";
-
-      try {
-        const response = await fetch(
-          SUPABASE_URL + "/functions/v1/manage-license",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "apikey": SUPABASE_KEY
-            },
-            body: JSON.stringify({
-              action: "validate",
-              key: key
-            })
-          }
-        );
-
-        let result;
-
-        try {
-          result = await response.json();
-        } catch {
-          throw new Error("The server returned an unreadable response.");
-        }
-
-        if (!response.ok) {
-          throw new Error(
-            result.error || result.message ||
-            "Server request failed. Please try again."
-          );
-        }
-
-        if (result.success === true && result.valid === true) {
-          message.textContent = "KEY VERIFIED. ACCESS GRANTED.";
-          $("key").value = "";
-          show("portal");
-        } else {
-          message.textContent =
-            "ACCESS DENIED: " +
-            (result.reason || "The key is invalid or unavailable.");
-        }
-      } catch (error) {
-        console.error("License verification failed:", error);
-        message.textContent =
-          "VERIFICATION FAILED: Check connection or server configuration.";
-      } finally {
-        button.disabled = false;
-      }
-    });
-
-    $("copyUpi").addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText($("upi").value);
-        $("copyUpi").textContent = "UPI ID COPIED";
-      } catch {
-        $("upi").select();
-        $("upi").setSelectionRange(0, 99999);
-        $("copyUpi").textContent =
-          "SELECTED — COPY USING YOUR PHONE MENU";
-      }
-    });
-
-    $("paymentDone").addEventListener("click", () => show("verify"));
-
-    $("copyAppeal").addEventListener("click", async () => {
-      const text = $("appealInfo").value.trim();
-
-      if (!text) {
-        $("systemLine").textContent =
-          "SYSTEM: WRITE YOUR NOTES FIRST_";
-        return;
-      }
-
-      try {
-        await navigator.clipboard.writeText(text);
-        $("systemLine").textContent = "SYSTEM: APPEAL NOTES COPIED_";
-      } catch {
-        $("appealInfo").focus();
-        $("appealInfo").select();
-        $("systemLine").textContent =
-          "SYSTEM: SELECTED — COPY USING YOUR PHONE MENU_";
-      }
-    });
-
-    $("logout").addEventListener("click", () => {
-      $("appealInfo").value = "";
-      $("key").value = "";
-      $("loginMessage").textContent = "SYSTEM READY: ENTER YOUR KEY_";
-      showLogin();
-    });
-  </script>
+$("clear").addEventListener("click", () => {
+  $("result").classList.add("hidden");
+  $("copy").classList.add("hidden");
+  $("copy").textContent = "COPY NOTES";
+  generated = "";
+});
+</script>
 </body>
 </html>
