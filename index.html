@@ -3,221 +3,316 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#030806">
-<title> FREE FIRE • Unban Bypass Terminal</title>
+<title>NEXVORA | Support Terminal</title>
 <style>
-:root {
-  --green:#8bffad;
-  --dim:#4eab70;
-  --bg:#030806;
-  --panel:#07130c;
-  --line:#1c5932;
-}
+:root{--g:#8cffad;--g2:#32ff75;--bg:#030806;--p:#07120b;--line:#235637;--muted:#a0c5ad}
 *{box-sizing:border-box}
-body{
-  margin:0;padding:20px 12px;color:var(--green);
-  background:radial-gradient(ellipse at top,#10351c 0%,#030806 65%);
-  font:14px "Courier New",monospace;min-height:100vh;
-}
-body:before{
-  content:"";position:fixed;inset:0;pointer-events:none;opacity:.13;
-  background:repeating-linear-gradient(0deg,transparent 0 3px,#56ff8b 4px);
-}
+body{margin:0;padding:16px 12px;background:radial-gradient(ellipse at top,#12351d,#030806 65%);color:var(--g);font:14px "Courier New",monospace;min-height:100vh}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.09;background:repeating-linear-gradient(0deg,transparent 0 3px,#57ff8a 4px)}
 main{max-width:760px;margin:auto;position:relative}
-header{text-align:center;padding:24px 8px}
-.logo{font-size:clamp(24px,6vw,42px);font-weight:bold;letter-spacing:4px;
-text-shadow:0 0 8px var(--green),0 0 25px #21ff65}
-.tag{margin-top:12px;color:#b5ffc9;font-size:11px;letter-spacing:2px}
-.panel{
-  border:1px solid var(--line);background:#061009eF;
-  padding:20px;margin:14px 0;box-shadow:0 0 22px #00ff3710;
-  animation:boot .45s ease both;
-}
-@keyframes boot{
- from{opacity:0;transform:translateY(10px);filter:brightness(2)}
- to{opacity:1;transform:translateY(0);filter:brightness(1)}
-}
+header{text-align:center;padding:25px 5px}
+.logo{font-size:clamp(24px,6vw,42px);font-weight:bold;letter-spacing:4px;text-shadow:0 0 8px var(--g),0 0 25px #21ff65}
+.tag{margin-top:10px;font-size:10px;letter-spacing:2px;color:#b8ffca}
+.panel{border:1px solid var(--line);background:#061009f2;padding:19px;margin:14px 0;box-shadow:0 0 24px #00ff3710;animation:boot .4s ease both}
+@keyframes boot{from{opacity:0;transform:translateY(10px);filter:brightness(2)}to{opacity:1;transform:none;filter:brightness(1)}}
 h1,h2{font-size:17px;letter-spacing:1px}
-p,.hint{color:#a3cdb0;line-height:1.65}
-label{display:block;margin:17px 0 7px}
-input,select,textarea{
-  width:100%;padding:12px;color:var(--green);
-  background:#020603;border:1px solid var(--line);
-  border-radius:2px;font:inherit;
-}
+p{color:var(--muted);line-height:1.65}
+label{display:block;margin:16px 0 7px;color:var(--g)}
+input,select,textarea{width:100%;padding:12px;color:var(--g);background:#020603;border:1px solid var(--line);border-radius:2px;font:inherit}
 option{background:#07130c}
-input:focus,select:focus,textarea:focus{
-  outline:1px solid var(--green);box-shadow:0 0 12px #35ff7040
-}
-button,.button{
-  display:block;width:100%;padding:13px;margin-top:13px;
-  background:var(--green);color:#031007;border:1px solid var(--green);
-  font:bold 13px "Courier New",monospace;text-align:center;
-  text-decoration:none;cursor:pointer;letter-spacing:1px
-}
-button.secondary,.button.secondary{background:transparent;color:var(--green)}
-.terminal{
-  margin-top:14px;padding:13px;border:1px solid var(--line);
-  background:#020503;min-height:46px;white-space:pre-wrap;
-  overflow-wrap:anywhere;line-height:1.7
-}
+input:focus,select:focus,textarea:focus{outline:1px solid var(--g);box-shadow:0 0 12px #35ff7040}
+button,.btn{display:block;width:100%;padding:13px;margin-top:12px;background:var(--g);color:#031007;border:1px solid var(--g);font:bold 13px "Courier New",monospace;text-align:center;text-decoration:none;cursor:pointer;letter-spacing:1px}
+button.secondary,.btn.secondary{background:transparent;color:var(--g)}
+button:disabled{opacity:.5;cursor:wait}
+.terminal{margin-top:14px;padding:13px;border:1px solid var(--line);background:#020503;min-height:48px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.7;color:var(--g)}
 .cursor{animation:blink 1s steps(2) infinite}
 @keyframes blink{50%{opacity:0}}
-.notice{border-left:3px solid var(--green);padding:12px;background:#0b2011}
+.notice{border-left:3px solid var(--g);padding:12px;background:#0b2011;color:#d1f3da;line-height:1.6}
 .hidden{display:none!important}
-footer{text-align:center;color:#6d9c7b;font-size:11px;padding:20px}
+.price{font-size:30px;font-weight:bold;text-shadow:0 0 12px var(--g)}
+.small{font-size:11px;color:#91b39c}
+footer{text-align:center;color:#6d9c7b;font-size:10px;padding:20px;letter-spacing:2px}
+.progress{height:4px;background:#183421;margin-top:12px;overflow:hidden}
+.progress i{display:block;height:100%;width:0;background:var(--g);box-shadow:0 0 12px var(--g)}
 </style>
 </head>
 <body>
 <main>
 <header>
-  <div class="logo">FREE FIRE</div>
-  <div class="tag">[ UNBAN BYPASS  TERMINAL ]</div>
-  <div class="tag">TRUSTED INFORMATION • SECURE BROWSING • CLEAR GUIDANCE</div>
+ <div class="logo">NEXVORA</div>
+ <div class="tag">[ CYBERPUNK SUPPORT TERMINAL ]</div>
+ <div class="tag">SECURE PAYMENT • SUPPORT INFORMATION</div>
 </header>
 
-<section class="panel">
-  <h1>01 // SYSTEM STATUS</h1>
-  <div id="boot" class="terminal">INITIALIZING TERMINAL...<span class="cursor">_</span></div>
-  <p>This tool helps you bypass game & unban your IDs. It is affiliated with Garena and can remove a ban.</p>
+<section id="login" class="panel">
+ <h1>01 // LICENSE AUTHENTICATION</h1>
+ <p>Enter your access key to continue.</p>
+ <label for="key">ACCESS KEY</label>
+ <input id="key" autocomplete="off" placeholder="Enter license key">
+ <button id="verifyKey">VERIFY ACCESS KEY</button>
+ <div id="loginMsg" class="terminal" role="status">SYSTEM READY_</div>
+ <button class="secondary" id="getKey">GET ACCESS KEY</button>
+ <p class="small">This portal is an independent support-preparation service and is not an official Garena website.</p>
 </section>
 
-<section class="panel">
-  <h2>02 // PREPARE YOUR NOTES</h2>
-  <form id="appealForm">
-    <label for="game">GAME</label>
-    <select id="game" required>
-      <option value="Free Fire">Free Fire</option>
-      <option value="Free Fire MAX">Free Fire MAX</option>
-    </select>
+<section id="details" class="panel hidden">
+ <h1>02 // PLAYER INFORMATION</h1>
+ <p>Enter accurate details. Do not share passwords, OTPs or account login credentials.</p>
+ <form id="detailsForm">
+  <label for="uid">ENTER PLAYER UID</label>
+  <input id="uid" inputmode="numeric" maxlength="30" required placeholder="Player UID">
 
-    <label for="device">DEVICE TYPE</label>
-    <select id="device" required>
-      <option value="">Choose device</option>
-      <option>Android phone</option>
-      <option>iPhone</option>
-      <option>Tablet</option>
-      <option>Other</option>
-    </select>
+  <label for="game">ENTER YOUR GAME NAME</label>
+  <input id="game" maxlength="100" required placeholder="Game name">
 
-    <label for="region">SERVER / REGION</label>
-    <select id="region" required>
-      <option value="">Choose region</option>
-      <option>India</option>
-      <option>Bangladesh</option>
-      <option>Singapore</option>
-      <option>Other / Unknown</option>
-    </select>
+  <label for="original">ENTER YOUR ORIGINAL NAME</label>
+  <input id="original" maxlength="100" required placeholder="Original name">
 
-    <label for="reason">WHAT HAPPENED?</label>
-    <select id="reason" required>
-      <option value="">Choose the truthful description</option>
-      <option>I used an unauthorized program</option>
-      <option>Someone else accessed my account</option>
-      <option>I received a verbal-abuse warning or ban</option>
-      <option>I do not know the reason</option>
-      <option>Other</option>
-    </select>
+  <label for="device">CHOOSE YOUR DEVICE</label>
+  <select id="device" required>
+   <option value="">Select device</option>
+   <option>Android phone</option>
+   <option>iPhone</option>
+   <option>Android tablet</option>
+   <option>iPad</option>
+   <option>PC / Emulator</option>
+   <option>Other</option>
+  </select>
 
-    <label for="details">YOUR EXPLANATION</label>
-    <textarea id="details" rows="5" maxlength="2000"
-      placeholder="Describe what happened accurately. Do not include passwords or OTPs."
-      required></textarea>
+  <label for="level">ENTER YOUR ID LEVEL</label>
+  <input id="level" type="number" min="1" max="500" required placeholder="Game account level">
 
-    <button type="submit">GENERATE LOCAL NOTES</button>
-    <button type="button" class="secondary" id="clear">CLEAR FORM</button>
-  </form>
-  <div id="result" class="terminal hidden" aria-live="polite"></div>
-  <button id="copy" class="hidden">COPY NOTES</button>
+  <label for="region">SERVER / REGION</label>
+  <select id="region" required>
+   <option value="">Select region</option>
+   <option>India</option>
+   <option>Bangladesh</option>
+   <option>Singapore</option>
+   <option>Middle East</option>
+   <option>Other / Unknown</option>
+  </select>
+
+  <label for="reason">REASON FOR BAN</label>
+  <select id="reason" required>
+   <option value="">Choose the truthful reason</option>
+   <option>I used hacking</option>
+   <option>I did verbal abuse</option>
+   <option>My friend took my Free Fire ID and used it to cheat, which got it banned</option>
+   <option>An unknown person hacked my Free Fire ID and used it to cheat, which got it banned</option>
+   <option>I don't know anything about how my ID got banned</option>
+  </select>
+
+  <label for="banShot">UPLOAD BAN SCREENSHOT</label>
+  <input id="banShot" type="file" accept="image/*" required>
+  <p class="small">Choose the screenshot showing the ban message. This prototype does not upload it to a server.</p>
+  <button type="submit">PROCEED →</button>
+ </form>
+ <div id="detailsLog" class="terminal hidden" aria-live="polite"></div>
+ <button id="continuePayment" class="hidden">CONTINUE TO PAYMENT</button>
 </section>
 
-<section class="panel">
-  <h2>03 // UNBAN BYPASS </h2>
-  <div class="notice">
-    YOUR BAN 100% GUARANTEE TO UNBAN USING THIS METHOD.
-  </div>
-  <a class="button" href="https://ffsupportind.garena.com/"
-     target="_blank" rel="noopener noreferrer">OPEN INDIA SUPPORT</a>
-  <a class="button secondary" href="https://ffsupport.garena.com/"
-     target="_blank" rel="noopener noreferrer">OPEN GENERAL SUPPORT</a>
+<section id="payment" class="panel hidden">
+ <h1>03 // PAYMENT TERMINAL</h1>
+ <div class="price">₹399 <span class="small">INR</span></div>
+ <div class="notice">Before paying, confirm the recipient and amount in your UPI app. Payment does not guarantee that an account will be reinstated.</div>
+ <label>UPI ID</label>
+ <input id="upi" value="jinwoo40054@kphdfc" readonly>
+ <button class="secondary" id="copyUpi">COPY UPI ID</button>
+
+ <div class="notice" style="margin-top:16px">
+  <strong>QR PAYMENT</strong><br>
+  Upload the correct ₹399 QR image to your website and add its image URL here before publishing. The previously supplied image is named payment-199-qr.png and has not been verified for ₹399.
+ </div>
+
+ <a class="btn" id="payUpi" href="upi://pay?pa=jinwoo40054%40kphdfc&amp;pn=NEXVORA&amp;am=399.00&amp;cu=INR">PAY ₹399 VIA UPI APP</a>
+ <p class="small">UPI app availability depends on your device. This page cannot independently confirm payment.</p>
+ <button id="paymentDone">PAYMENT DONE — CONTINUE</button>
 </section>
 
-<footer>NEXVORA • UNBAN PREPARATION •  UNBAN GUARANTEE</footer>
+<section id="proof" class="panel hidden">
+ <h1>04 // PAYMENT PROOF</h1>
+ <form id="proofForm">
+  <label for="utr">UTR / TRANSACTION REFERENCE</label>
+  <input id="utr" maxlength="80" required placeholder="Enter transaction reference">
+  <label for="receipt">UPLOAD PAYMENT SCREENSHOT</label>
+  <input id="receipt" type="file" accept="image/*" required>
+  <button type="submit">SUBMIT FOR REVIEW</button>
+ </form>
+ <div id="proofLog" class="terminal hidden" aria-live="polite"></div>
+ <p class="small">Live payment review, secure screenshot storage and Telegram notification are not connected in this standalone prototype.</p>
+</section>
+
+<section id="pending" class="panel hidden">
+ <h1>05 // REVIEW STATUS</h1>
+ <div id="pendingLog" class="terminal">WAITING FOR SERVER CONFIRMATION...</div>
+ <div class="progress"><i id="bar"></i></div>
+ <p class="small">This page must not be treated as proof of payment approval. Refreshing or closing the page will not preserve a server-side request.</p>
+ <button id="simulateApproved" class="secondary">DEMO ONLY: PREVIEW APPROVED SCREEN</button>
+</section>
+
+<section id="final" class="panel hidden">
+ <h1>06 // FINAL SUPPORT REQUEST</h1>
+ <div class="notice">The service provides help preparing support information. Actual account reinstatement is decided by the game operator and is not guaranteed. If the paid service cannot be delivered, refund eligibility must be handled according to the published refund policy and verified transaction.</div>
+ <label for="refundUpi">UPI ID FOR REFUND, IF APPLICABLE</label>
+ <input id="refundUpi" maxlength="100" placeholder="Enter your UPI ID">
+ <label for="finalConfirm">CONFIRMATION</label>
+ <div class="notice">I confirm that the information I supplied is accurate to the best of my knowledge.</div>
+ <button id="submitRequest">SUBMIT SUPPORT PREPARATION REQUEST</button>
+ <div id="finalLog" class="terminal hidden" aria-live="polite"></div>
+ <a class="btn secondary" href="https://ffsupport.garena.com/" target="_blank" rel="noopener noreferrer">OPEN OFFICIAL SUPPORT</a>
+</section>
+
+<footer>NEXVORA • INDEPENDENT SUPPORT PREPARATION • NO UNBAN GUARANTEE</footer>
 </main>
 
 <script>
+"use strict";
 const $ = id => document.getElementById(id);
-let generated = "";
+const sections = ["login","details","payment","proof","pending","final"];
+let approvedDemo = false;
+let detailsSnapshot = null;
 
-const lines = [
-  "BOOT: OK",
-  "TERMINAL: ONLINE",
-  "LOCAL NOTES MODE: ENABLED",
-  "NETWORK SUBMISSION: DISABLED",
-  "READY_"
-];
-let index = 0;
-function bootLine(){
-  if(index < lines.length){
-    $("boot").textContent += "\n" + lines[index++];
-    setTimeout(bootLine, 350);
-  }
+function show(id){
+ sections.forEach(s => $(s).classList.toggle("hidden",s !== id));
+ window.scrollTo({top:0,behavior:"smooth"});
 }
-$("boot").textContent = "";
-bootLine();
-
-$("appealForm").addEventListener("submit", event => {
-  event.preventDefault();
-
-  const game = $("game").value;
-  const device = $("device").value;
-  const region = $("region").value;
-  const reason = $("reason").value;
-  const details = $("details").value.trim();
-
-  if(!device || !region || !reason || !details){
-    $("result").classList.remove("hidden");
-    $("result").textContent = "ERROR: COMPLETE ALL REQUIRED FIELDS_";
-    return;
+function logLines(el, lines, delay=350){
+ el.textContent="";
+ let i=0;
+ function next(){
+  if(i<lines.length){
+   el.textContent += (i ? "\n" : "") + lines[i++];
+   setTimeout(next,delay);
   }
+ }
+ next();
+}
 
-  generated =
-`SUPPORT PREPARATION NOTES
-=========================
-Game: ${game}
-Device: ${device}
-Region: ${region}
-Description: ${reason}
-
-Player explanation:
-${details}
-
-Please review this information and follow the official support process.
-This document is not an official submission or a guarantee of reinstatement.`;
-
-  $("result").textContent =
-    "PROCESS: COMPLETE\nNOTES GENERATED LOCALLY.\n\n" + generated;
-  $("result").classList.remove("hidden");
-  $("copy").classList.remove("hidden");
+$("verifyKey").addEventListener("click", async()=>{
+ const key=$("key").value.trim();
+ if(!key){$("loginMsg").textContent="INPUT REQUIRED: ENTER ACCESS KEY_";return}
+ $("verifyKey").disabled=true;
+ $("loginMsg").textContent="CONNECTING TO LICENSE SERVER...";
+ try{
+  const r=await fetch("https://bxyfphaytgtcodcnszya.supabase.co/functions/v1/manage-license",{
+   method:"POST",
+   headers:{
+    "Content-Type":"application/json",
+    "apikey":"sb_publishable_qT3bI6MLd-M9nCo2n7aWDg_xxQFhmi6"
+   },
+   body:JSON.stringify({action:"validate",key})
+  });
+  const data=await r.json();
+  if(!r.ok) throw new Error("Server request failed");
+  if(data.success===true && data.valid===true){
+   $("loginMsg").textContent="KEY ACCEPTED. OPENING PLAYER FORM...";
+   show("details");
+  }else{
+   $("loginMsg").textContent="ACCESS DENIED: "+(data.reason||"KEY INVALID OR UNAVAILABLE");
+  }
+ }catch(e){
+  $("loginMsg").textContent="CONNECTION ERROR: SERVER COULD NOT VERIFY THE KEY.";
+ }finally{
+  $("verifyKey").disabled=false;
+ }
 });
 
-$("copy").addEventListener("click", async () => {
-  try{
-    await navigator.clipboard.writeText(generated);
-    $("copy").textContent = "COPIED SUCCESSFULLY";
-  }catch{
-    $("result").textContent +=
-      "\n\nClipboard unavailable. Select and copy the notes manually.";
-  }
+$("getKey").addEventListener("click",()=>{
+ $("loginMsg").textContent="ACCESS KEY PURCHASE/ISSUANCE IS NOT AUTOMATED. CONTACT YOUR SERVICE PROVIDER.";
 });
 
-$("clear").addEventListener("click", () => {
-  $("result").classList.add("hidden");
-  $("copy").classList.add("hidden");
-  $("copy").textContent = "COPY NOTES";
-  generated = "";
+$("detailsForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ const file=$("banShot").files[0];
+ if(!file){$("detailsLog").classList.remove("hidden");$("detailsLog").textContent="ERROR: BAN SCREENSHOT REQUIRED_";return}
+ detailsSnapshot={
+  uid:$("uid").value.trim(),
+  game:$("game").value.trim(),
+  original:$("original").value.trim(),
+  device:$("device").value,
+  level:$("level").value,
+  region:$("region").value,
+  reason:$("reason").value,
+  screenshotName:file.name
+ };
+ const log=$("detailsLog");
+ log.classList.remove("hidden");
+ $("continuePayment").classList.add("hidden");
+ logLines(log,[
+  "> INITIALIZING REVIEW TERMINAL...",
+  "> CHECKING REQUIRED FIELDS...",
+  "> PLAYER UID: "+detailsSnapshot.uid,
+  "> GAME: "+detailsSnapshot.game,
+  "> ORIGINAL NAME: "+detailsSnapshot.original,
+  "> DEVICE: "+detailsSnapshot.device,
+  "> ID LEVEL: "+detailsSnapshot.level,
+  "> REGION: "+detailsSnapshot.region,
+  "> REASON: "+detailsSnapshot.reason,
+  "> SCREENSHOT SELECTED: "+detailsSnapshot.screenshotName,
+  "> LOCAL FORM CHECK COMPLETE."
+ ],230);
+ setTimeout(()=>$("continuePayment").classList.remove("hidden"),2800);
+});
+
+$("continuePayment").addEventListener("click",()=>show("payment"));
+
+$("copyUpi").addEventListener("click",async()=>{
+ try{
+  await navigator.clipboard.writeText($("upi").value);
+  $("copyUpi").textContent="UPI ID COPIED";
+ }catch{
+  $("upi").select();
+  $("copyUpi").textContent="SELECT AND COPY UPI ID";
+ }
+});
+
+$("paymentDone").addEventListener("click",()=>show("proof"));
+
+$("proofForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ const utr=$("utr").value.trim();
+ const receipt=$("receipt").files[0];
+ if(!utr||!receipt)return;
+ $("proofLog").classList.remove("hidden");
+ logLines($("proofLog"),[
+  "> PAYMENT PROOF DETAILS ENTERED...",
+  "> UTR REFERENCE CAPTURED LOCALLY.",
+  "> SCREENSHOT SELECTED: "+receipt.name,
+  "> SERVER SUBMISSION IS NOT CONFIGURED.",
+  "> NO PAYMENT HAS BEEN VERIFIED BY THIS PAGE."
+ ],500);
+ setTimeout(()=>{
+  show("pending");
+  logLines($("pendingLog"),[
+   "REVIEW STATUS: NOT CONNECTED",
+   "A secure backend is required to send the UTR and screenshot to an admin.",
+   "This prototype cannot confirm receipt, approval or rejection."
+  ],650);
+ },2300);
+});
+
+$("simulateApproved").addEventListener("click",()=>{
+ approvedDemo=true;
+ show("final");
+ $("finalLog").classList.remove("hidden");
+ $("finalLog").textContent="DEMO PREVIEW ONLY: THIS IS NOT A REAL PAYMENT APPROVAL.";
+});
+
+$("submitRequest").addEventListener("click",()=>{
+ const refund=$("refundUpi").value.trim();
+ if(!refund){
+  $("finalLog").classList.remove("hidden");
+  $("finalLog").textContent="INPUT REQUIRED: ENTER REFUND UPI ID IF YOU WANT IT INCLUDED.";
+  return;
+ }
+ $("finalLog").classList.remove("hidden");
+ $("finalLog").textContent=
+  (approvedDemo?"DEMO PREVIEW ONLY. ":"")+
+  "NO REQUEST WAS SENT. CONNECT A SECURE BACKEND BEFORE ACCEPTING REAL CUSTOMER DATA OR PAYMENTS.";
 });
 </script>
 </body>
-</html>
+  </html>
+  
