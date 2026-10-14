@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEXVORA | Admin Panel</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080d0a;color:#eaffef;font-family:Arial,sans-serif;padding:20px}
+main{max-width:950px;margin:30px auto}
+.panel{background:#101a13;border:1px solid #24472d;border-radius:14px;padding:22px;margin-bottom:18px}
+h1,h2{color:#65ff87}
+input,select,button{width:100%;padding:12px;margin:7px 0;border-radius:7px;border:1px solid #34543b;background:#080d0a;color:white}
+button{background:#65ff87;color:#061009;font-weight:bold;cursor:pointer}
+button.danger{background:#ff6b6b}
+.item{border:1px solid #34543b;border-radius:9px;padding:15px;margin:12px 0;overflow-wrap:anywhere}
+.muted{color:#a8b9ac;font-size:13px}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<main>
+  <h1>NEXVORA / ADMIN</h1>
+  <p class="muted">Authorized administrator access only.</p>
+
+  <section id="login" class="panel">
+    <h2>Admin Login</h2>
+    <input id="email" type="email" placeholder="Admin email" autocomplete="username">
+    <input id="password" type="password" placeholder="Password" autocomplete="current-password">
+    <button id="loginBtn">LOGIN</button>
+    <p id="loginMsg" role="status"></p>
+  </section>
+
+  <section id="dashboard" class="hidden">
+    <div class="panel">
+      <h2>Support Requests</h2>
+      <p id="adminInfo" class="muted"></p>
+      <button id="refreshBtn">REFRESH REQUESTS</button>
+      <button id="logoutBtn">LOG OUT</button>
+      <p id="listMsg" role="status"></p>
+      <div id="requests"></div>
+    </div>
+  </section>
+</main>
+
+<script>
+const SUPABASE_URL = "https://bxyfphaytgtcodcnszya.supabase.co";
+const SUPABASE_KEY = "sb_publishable_qT3bI6MLd-M9nCo2n7aWDg_xxQFhmi6";
+const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+const $ = id => document.getElementById(id);
+let currentAdmin = null;
+
+function message(id, text) {
+  $(id).textContent = text;
+}
+
+async function checkAdmin() {
+  const { data: userData, error: userError } = await db.auth.getUser();
+  if (userError || !userData.user) return false;
+
+  const { data, error } = await db
+    .from("admin_users")
+    .select("user_id")
+    .eq("user_id", userData.user.id)
+    .maybeSingle();
+
+  if (error || !data) return false;
+  currentAdmin = userData.user;
+  return true;
+}
+
+async function showDashboard() {
+  if (!(await checkAdmin())) {
+    currentAdmin = null;
+    $("dashboard").classList.add("hidden");
+    $("login").classList.remove("hidden");
+    message("loginMsg", "Admin access not authorized.");
+    return;
+  }
+
+  $("login").classList.add("hidden");
+  $("dashboard").classList.remove("hidden");
+  message("adminInfo", "Signed in: " + currentAdmin.email);
+  await loadRequests();
+}
+
+$("loginBtn").addEventListener("click", async () => {
+  const email = $("email").value.trim();
+  const password = $("password").value;
+
+  if (!email || !password) {
+    message("loginMsg", "Enter your email and password.");
+    return;
+  }
+
+  message("loginMsg", "Signing in...");
+  const { error } = await db.auth.signInWithPassword({ email, password });
+
+  if (error) {
+    message("loginMsg", "Login failed. Check your credentials.");
+    return;
+  }
+
+  await showDashboard();
+});
+
+async function loadRequests() {
+  if (!(await checkAdmin())) {
+    await db.auth.signOut();
+    await showDashboard();
+    return;
+  }
+
+  message("listMsg", "Loading requests...");
+  $("requests").replaceChildren();
+
+  const { data, error } = await db
+    .from("support_requests")
+    .select("id, message, status, created_at, customer_telegram_id, customer_username, admin_reply")
+    .order("created_at", { ascending: false })
+    .limit(100);
+
+  if (error) {
+    message("listMsg", "Could not load requests. Check database policies.");
+    return;
+  }
+
+  message("listMsg", data.length ? "Latest requests:" : "No requests yet.");
+
+  for (const item of data) {
+    const card = document.createElement("article");
+    card.className = "item";
+
+    const heading = document.createElement("h3");
+    heading.textContent = "Request #" + item.id;
+
+    const details = document.createElement("p");
+    details.textContent =
+      "Status: " + item.status + "\nDate: " +
+      new Date(item.created_at).toLocaleString();
+
+    const body = document.createElement("p");
+    body.textContent = item.message;
+
+    const status = document.createElement("select");
+    for (const s of ["pending", "in_progress", "resolved", "declined"]) {
+      const option = document.createElement("option");
+      option.value = s;
+      option.textContent = s;
+      status.appendChild(option);
+    }
+    status.value = item.status;
+
+    const update = document.createElement("button");
+    update.textContent = "UPDATE STATUS";
+    update.addEventListener("click", async () => {
+      const { error } = await db.from("support_requests")
+        .update({ status: status.value, updated_at: new Date().toISOString() })
+        .eq("id", item.id);
+      message("listMsg", error ? "Status update failed." : "Status updated.");
+      if (!error) await loadRequests();
+    });
+
+    const remove = document.createElement("button");
+    remove.textContent = "DELETE REQUEST";
+    remove.className = "danger";
+    remove.addEventListener("click", async () => {
+      if (!confirm("Permanently delete request #" + item.id + "?")) return;
+      const { error } = await db.from("support_requests")
+        .delete().eq("id", item.id);
+      message("listMsg", error ? "Delete failed." : "Request deleted.");
+      if (!error) await loadRequests();
+    });
+
+    card.append(heading, details, body, status, update, remove);
+    $("requests").appendChild(card);
+  }
+}
+
+$("refreshBtn").addEventListener("click", loadRequests);
+
+$("logoutBtn").addEventListener("click", async () => {
+  await db.auth.signOut();
+  currentAdmin = null;
+  $("dashboard").classList.add("hidden");
+  $("login").classList.remove("hidden");
+  $("requests").replaceChildren();
+  message("loginMsg", "Logged out.");
+});
+
+db.auth.getSession().then(async ({ data }) => {
+  if (data.session) await showDashboard();
+});
+</script>
+</body>
+  </html>
+  
