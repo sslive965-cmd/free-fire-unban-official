@@ -71,16 +71,32 @@ footer{text-align:center;color:#62846c;font-size:11px;padding:15px}
     </div>
   </div>
 
-  <section class="panel" id="licensePanel">
-    <div class="panel-head">[ 01 ] LICENSE ACCESS</div>
-    <div class="panel-body">
-      <div class="tag">ENTER YOUR VALID LICENSE KEY TO CONTINUE</div>
-      <label for="license">LICENSE KEY</label>
-      <input id="license" placeholder="Enter license key" autocomplete="off">
-      <button id="licenseBtn" onclick="validateLicense()">VALIDATE LICENSE</button>
-      <div id="licenseMsg" class="status" role="status"></div>
-    </div>
-  </section>
+  
+<section class="panel" id="licensePanel">
+  <div class="panel-head">[ 01 ] LICENSE ACCESS</div>
+  <div class="panel-body">
+    <div class="tag">ENTER YOUR LICENSE KEY TO CONTINUE</div>
+
+    <label for="license">LICENSE KEY</label>
+    <input id="license" type="text"
+           placeholder="Enter license key"
+           autocomplete="off">
+
+    <button id="licenseBtn" onclick="validateLicense()">
+      VALIDATE LICENSE
+    </button>
+
+    <a class="button secondary"
+       href="https://t.me/NEXVORA_Support_Bot"
+       target="_blank"
+       rel="noopener noreferrer">
+      GET KEY
+    </a>
+
+    <div id="licenseMsg" class="status" role="status"></div>
+  </div>
+</section>
+  
 
   <section class="panel hidden" id="payment199">
     <div class="panel-head">[ 02 ] SUPPORT PAYMENT — ₹199</div>
