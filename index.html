@@ -4,262 +4,383 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#050807">
-<title>NEXVORA | Secure Access</title>
+<meta name="theme-color" content="#050805">
+<title>FREE FIRE | Bypass Terminal</title>
 <style>
-:root {
-  --bg:#050807;
-  --panel:#0b1210;
-  --green:#39ff88;
-  --green2:#16c765;
-  --text:#eafff1;
-  --muted:#9ab2a4;
-  --border:rgba(57,255,136,.28);
-  --red:#ff6b6b;
+:root{
+  --bg:#050805;--panel:#0a100b;--green:#39ff78;
+  --dim:#8cb99a;--border:#245b35;--red:#ff6262;
 }
 *{box-sizing:border-box}
 body{
-  margin:0;min-height:100vh;padding:22px 14px;
-  background:radial-gradient(ellipse at top,#10281b 0%,#050807 58%);
-  color:var(--text);font-family:Arial,Helvetica,sans-serif;
+  margin:0;background:var(--bg);color:var(--green);
+  font-family:Consolas,"Courier New",monospace;
+  background-image:linear-gradient(#39ff7809 1px,transparent 1px),
+  linear-gradient(90deg,#39ff7809 1px,transparent 1px);
+  background-size:24px 24px;
 }
-header{text-align:center;margin:8px auto 24px}
-.logo{font-size:30px;font-weight:900;letter-spacing:5px;color:var(--green)}
-.tag{color:var(--muted);font-size:11px;letter-spacing:3px;margin-top:7px}
-.container{max-width:510px;margin:auto}
-.card{
-  background:linear-gradient(145deg,rgba(13,25,19,.98),rgba(5,10,8,.98));
-  border:1px solid var(--border);border-radius:17px;padding:23px;
-  box-shadow:0 0 28px rgba(57,255,136,.07);
+header{border-bottom:1px solid var(--border);padding:18px 14px}
+.brand{font-size:22px;font-weight:bold;letter-spacing:2px}
+.brand span{color:#fff}
+.sub{font-size:11px;color:var(--dim);margin-top:7px}
+main{max-width:720px;margin:24px auto;padding:0 13px 35px}
+.panel{border:1px solid var(--border);background:#080d09f5;margin-bottom:16px}
+.panel-head{padding:12px;border-bottom:1px solid var(--border);font-weight:bold}
+.panel-body{padding:15px}
+.tag{color:var(--dim);font-size:12px;margin-bottom:14px}
+label{display:block;font-size:12px;margin:13px 0 7px;color:#b4f9c5}
+input,textarea,select{
+  width:100%;background:#030603;border:1px solid var(--border);
+  color:var(--green);padding:12px;font:inherit;font-size:14px;
+  border-radius:0;outline:none;
 }
-h1{font-size:23px;margin:0 0 10px}
-h2{font-size:19px;margin:0 0 13px}
-p{line-height:1.55;color:var(--muted);font-size:14px}
-label{display:block;font-size:12px;color:#c6e9d3;margin:15px 0 7px}
-input,select,textarea{
-  width:100%;padding:13px;background:#050a07;color:white;
-  border:1px solid #294b36;border-radius:9px;outline:none;font-size:14px;
-}
-input:focus,select:focus,textarea:focus{border-color:var(--green)}
+input:focus,textarea:focus{border-color:var(--green)}
+textarea{min-height:90px;resize:vertical}
 button,.button{
-  display:block;width:100%;padding:13px 14px;margin-top:12px;
-  background:var(--green);color:#041108;border:0;border-radius:9px;
-  font-weight:800;font-size:14px;text-align:center;text-decoration:none;
-  cursor:pointer;
+  display:block;width:100%;border:1px solid var(--green);
+  background:var(--green);color:#001b08;padding:13px;
+  font:bold 13px Consolas,monospace;cursor:pointer;
+  text-align:center;text-decoration:none;margin-top:12px;
 }
-button.secondary,.button.secondary{
-  background:transparent;color:var(--green);border:1px solid var(--border);
-}
-button:disabled{opacity:.5;cursor:not-allowed}
+button.secondary,.button.secondary{background:transparent;color:var(--green)}
+button:disabled{opacity:.5;cursor:wait}
+.small{font-size:11px;color:var(--dim);line-height:1.7}
+.notice{border:1px dashed var(--border);padding:12px;font-size:12px;line-height:1.7;margin:12px 0}
+.status{font-size:12px;line-height:1.7;overflow-wrap:anywhere}
 .hidden{display:none!important}
-.notice{
-  padding:12px;border-radius:9px;background:#0c1d13;
-  border:1px solid var(--border);font-size:13px;line-height:1.5;margin-top:14px;
-}
-.warning{border-color:#765e27;background:#201a0a;color:#ffe5a3}
-.error{color:#ff8585;font-size:13px;margin-top:10px}
-.success{color:var(--green);font-size:13px;margin-top:10px}
-.qr{
-  width:min(100%,280px);aspect-ratio:1;object-fit:contain;display:block;
-  margin:18px auto;background:white;border-radius:10px;padding:8px;
-}
-.amount{font-size:35px;font-weight:900;color:var(--green);text-align:center;margin:12px 0}
-.upi{text-align:center;overflow-wrap:anywhere;color:#d9ffe5}
-.small{text-align:center;font-size:12px;color:var(--muted)}
-hr{border:0;border-top:1px solid var(--border);margin:19px 0}
-.steps{padding-left:20px;color:#d7e8dc;font-size:14px;line-height:1.8}
-.pulse{animation:pulse 1.8s infinite}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(57,255,136,.15)}50%{box-shadow:0 0 22px 3px rgba(57,255,136,.18)}}
-footer{text-align:center;font-size:11px;color:#6f8b7b;margin:20px 0}
+img.qr{display:block;width:min(100%,290px);margin:12px auto;background:white;padding:8px}
+hr{border:0;border-top:1px solid var(--border);margin:15px 0}
+footer{text-align:center;color:#62846c;font-size:11px;padding:15px}
+.green{color:var(--green)}.red{color:var(--red)}
 </style>
 </head>
 <body>
 <header>
-  <div class="logo">NEXVORA</div>
-  <div class="tag">SECURE ACCESS SYSTEM</div>
+  <div class="brand">NEXVORA<span>_</span>TERMINAL</div>
+  <div class="sub">FREE FIRE BYPASS TERMINAL // SECURE BYPASS CONSOLE</div>
 </header>
 
-<main class="container">
-
-  <!-- LOGIN -->
-  <section id="login" class="card">
-    <h1>Access Portal</h1>
-    <p>Enter your license key to continue. If you don't have a key, purchase one below.</p>
-    <label for="licenseKey">License Key</label>
-    <input id="licenseKey" type="text" placeholder="Enter your license key" autocomplete="off">
-    <button id="validateBtn" onclick="validateLicense()">Verify License</button>
-    <div id="loginMessage" aria-live="polite"></div>
-    <hr>
-    <div class="notice">
-      <strong>New user?</strong><br>
-      Get a license key for ₹199. Payment verification and key issuance are handled through the support bot.
+<main>
+  <div class="panel">
+    <div class="panel-head">[ 00 ] SYSTEM STATUS</div>
+    <div class="panel-body">
+      <div class="status">SYSTEM: <span class="green">ONLINE</span><br>
+      MODE: PAYMENT + SUPPORT REQUEST<br>
+      PAYMENT: MANUAL VERIFICATION<br>
+      <span class="small">Payment karne se game account unban hone ki guarantee nahi milti.</span></div>
     </div>
-    <button onclick="showPage('payment199')">Get License Key — ₹199</button>
-  </section>
+  </div>
 
-  <!-- 199 PAYMENT -->
-  <section id="payment199" class="card hidden">
-    <h1>License Key Payment</h1>
-    <p class="small">Scan this QR code or open your UPI app using the payment button below.</p>
-    <div class="amount">₹199</div>
-    <img class="qr" src="https://raw.githubusercontent.com/sslive965-cmd/free-fire-unban-official/refs/heads/main/payment-199-qr.png" alt="₹199 license payment QR code">
-    <div class="upi">UPI ID: <strong>jinwoo40054@kphdfc</strong></div>
-    <button class="secondary" onclick="copyUPI()">Copy UPI ID</button>
-    <a class="button" href="upi://pay?pa=jinwoo40054%40kphdfc&amp;pn=NEXVORA&amp;am=199.00&amp;cu=INR&amp;tn=NEXVORA%20License%20Key" >Pay ₹199 via UPI App</a>
-    <div class="notice warning">Pay exactly ₹199. Keep your UTR/reference number and payment screenshot ready. Sending payment proof does not mean payment is already verified.</div>
-    <button onclick="showPage('licenseInstructions')">I Have Paid — Continue</button>
-    <button class="secondary" onclick="showPage('login')">Back to Login</button>
-  </section>
-
-  <!-- AFTER 199 PAYMENT -->
-  <section id="licenseInstructions" class="card hidden pulse">
-    <h1>Payment Instructions</h1>
-    <p>Continue in the official NEXVORA support bot to submit your payment details and request your license key.</p>
-    <div class="notice">
-      <strong>Next steps</strong>
-      <ol class="steps">
-        <li>Open the NEXVORA Support Bot.</li>
-        <li>Choose the Get Key option.</li>
-        <li>Send your payment screenshot and UTR/reference number.</li>
-        <li>Wait for manual payment verification.</li>
-        <li>Your key is sent after the payment is verified by the admin.</li>
-      </ol>
+  <section class="panel" id="licensePanel">
+    <div class="panel-head">[ 01 ] LICENSE ACCESS</div>
+    <div class="panel-body">
+      <div class="tag">ENTER YOUR VALID LICENSE KEY TO CONTINUE</div>
+      <label for="license">LICENSE KEY</label>
+      <input id="license" placeholder="Enter license key" autocomplete="off">
+      <button id="licenseBtn" onclick="validateLicense()">VALIDATE LICENSE</button>
+      <div id="licenseMsg" class="status" role="status"></div>
     </div>
-    <a class="button" href="https://t.me/NEXVORA_Support_Bot" target="_blank" rel="noopener noreferrer">Continue to Get Key on Telegram</a>
-    <button class="secondary" onclick="showPage('payment199')">Back to ₹199 Payment</button>
-    <button class="secondary" onclick="showPage('login')">Back to Login</button>
   </section>
 
-  <!-- PLAYER DETAILS -->
-  <section id="details" class="card hidden">
-    <h1>Player Information</h1>
-    <p>Enter the requested details to continue to the ₹399 service payment page.</p>
-    <form id="detailsForm">
-      <label for="playerName">Player Name</label>
-      <input id="playerName" required maxlength="80" placeholder="Enter player name">
-      <label for="playerUID">Player UID</label>
-      <input id="playerUID" required inputmode="numeric" maxlength="30" placeholder="Enter player UID">
-      <label for="playerRegion">Region</label>
-      <select id="playerRegion" required>
-        <option value="">Select region</option>
-        <option>India</option>
-        <option>Other</option>
-      </select>
-      <label for="issueDetails">Issue Details</label>
-      <textarea id="issueDetails" rows="3" required placeholder="Describe your issue"></textarea>
-      <label for="banScreenshot">Screenshot (optional)</label>
-      <input id="banScreenshot" type="file" accept="image/*">
-      <button type="submit">Continue to ₹399 Payment</button>
-    </form>
-    <button class="secondary" onclick="showPage('login')">Back</button>
+  <section class="panel hidden" id="payment199">
+    <div class="panel-head">[ 02 ] SUPPORT PAYMENT — ₹199</div>
+    <div class="panel-body">
+      <div class="notice">Scan the QR or pay using the UPI ID below. Keep your UTR/transaction reference for submission.</div>
+      <img class="qr" src="https://raw.githubusercontent.com/sslive965-cmd/free-fire-unban-official/refs/heads/main/payment-199-qr.png" alt="₹199 payment QR">
+      <label>UPI ID</label>
+      <input readonly value="jinwoo40054@kphdfc" id="upi199">
+      <button class="secondary" onclick="copyUPI('upi199')">COPY UPI ID</button>
+      <a class="button secondary" href="https://t.me/NEXVORA_Support_Bot" target="_blank" rel="noopener">OPEN TELEGRAM SUPPORT</a>
+      <div class="small">Payment is subject to manual verification. Do not send payment more than once for the same request.</div>
+    </div>
   </section>
 
-  <!-- 399 PAYMENT -->
-  <section id="payment399" class="card hidden">
-    <h1>Service Payment</h1>
-    <p class="small">This is the separate ₹399 service payment QR.</p>
-    <div class="amount">₹399</div>
-    <img class="qr" src="https://raw.githubusercontent.com/sslive965-cmd/free-fire-unban-official/refs/heads/main/payment-399-qr.jpg" alt="₹399 service payment QR code">
-    <div class="upi">UPI ID: <strong>jinwoo40054@kphdfc</strong></div>
-    <button class="secondary" onclick="copyUPI()">Copy UPI ID</button>
-    <a class="button" href="upi://pay?pa=jinwoo40054%40kphdfc&amp;pn=NEXVORA&amp;am=399.00&amp;cu=INR&amp;tn=NEXVORA%20Service" >Pay ₹399 via UPI App</a>
-    <div class="notice warning">Check the amount before paying. This page does not automatically verify payments.</div>
-    <button onclick="showPage('proof399')">I Have Paid — Continue</button>
-    <button class="secondary" onclick="showPage('details')">Back to Details</button>
+  <section class="panel hidden" id="detailsPanel">
+    <div class="panel-head">[ 03 ] PLAYER DETAILS</div>
+    <div class="panel-body">
+      <form id="detailsForm">
+        <label for="customerName">YOUR NAME</label>
+        <input id="customerName" maxlength="80" required autocomplete="name">
+        <label for="playerUid">PLAYER UID (DIGITS ONLY)</label>
+        <input id="playerUid" inputmode="numeric" pattern="[0-9]{5,30}" maxlength="30" required>
+        <label for="playerRegion">REGION</label>
+        <select id="playerRegion" required>
+          <option value="">Select region</option>
+          <option>India</option><option>Bangladesh</option>
+          <option>Pakistan</option><option>Nepal</option>
+          <option>Indonesia</option><option>Other</option>
+        </select>
+        <label for="issueDetails">ISSUE DETAILS (OPTIONAL)</label>
+        <textarea id="issueDetails" maxlength="1500" placeholder="Describe your issue"></textarea>
+        <button type="submit">CONTINUE TO PAYMENT</button>
+      </form>
+      <div id="detailsMsg" class="status" role="status"></div>
+    </div>
   </section>
 
-  <!-- 399 PROOF LIMITATION -->
-  <section id="proof399" class="card hidden">
-    <h1>Payment Reference</h1>
-    <p>You can keep your reference details ready. This page is not connected to a submission backend, so anything entered here will not be sent to the admin.</p>
-    <label for="utr399">UTR / Transaction Reference</label>
-    <input id="utr399" placeholder="Enter UTR/reference number">
-    <label for="proofFile399">Payment Screenshot</label>
-    <input id="proofFile399" type="file" accept="image/*">
-    <div class="notice warning">Do not treat this form as a completed submission. Contact the service provider through their official support channel for verified submission instructions.</div>
-    <button class="secondary" onclick="showPage('payment399')">Back to ₹399 Payment</button>
-    <button class="secondary" onclick="showPage('login')">Back to Login</button>
+  <section class="panel hidden" id="payment399">
+    <div class="panel-head">[ 04 ] REQUEST PAYMENT — ₹399</div>
+    <div class="panel-body">
+      <div class="notice">Check your player details before paying. Your request will be reviewed after payment proof submission. Payment does guarantee an unban.</div>
+      <img class="qr" src="https://raw.githubusercontent.com/sslive965-cmd/free-fire-unban-official/refs/heads/main/payment-399-qr.jpg" alt="₹399 payment QR">
+      <label>UPI ID</label>
+      <input id="upi399" readonly value="jinwoo40054@kphdfc">
+      <button class="secondary" onclick="copyUPI('upi399')">COPY UPI ID</button>
+      <hr>
+      <form id="proofForm">
+        <label for="utr">UTR / TRANSACTION REFERENCE</label>
+        <input id="utr" minlength="6" maxlength="100" required autocomplete="off">
+        <label for="screenshot">PAYMENT SCREENSHOT (JPEG/PNG/WEBP)</label>
+        <input id="screenshot" type="file" accept="image/jpeg,image/png,image/webp" required>
+        <div class="small">Image must be under 3.5 MB.</div>
+        <button id="submitBtn" type="submit">SUBMIT PAYMENT PROOF</button>
+      </form>
+      <div id="submitMsg" class="status" role="status"></div>
+    </div>
   </section>
 
+  <section class="panel" id="trackingPanel">
+    <div class="panel-head">[ 05 ] TRACK REQUEST</div>
+    <div class="panel-body">
+      <label for="trackingToken">TRACKING TOKEN</label>
+      <input id="trackingToken" placeholder="Paste your tracking token">
+      <button class="secondary" onclick="checkStatus()">CHECK STATUS</button>
+      <div id="trackingMsg" class="status" role="status"></div>
+      <hr>
+      <label for="refundToken">REFUND REQUEST — TRACKING TOKEN</label>
+      <input id="refundToken" placeholder="Tracking token">
+      <label for="refundUpi">YOUR REFUND UPI ID</label>
+      <input id="refundUpi" maxlength="150" placeholder="name@upi">
+      <button class="secondary" onclick="requestRefund()">SUBMIT REFUND REQUEST</button>
+      <div id="refundMsg" class="status" role="status"></div>
+      <div class="small">Refund requests are subject to request/payment status and administrator review.</div>
+    </div>
+  </section>
+
+  <div class="notice">
+    <strong>IMPORTANT:</strong> NEXVORA is affiliated with Garena. unban outcome is guaranteed. don't share your game password, OTP, or account login to anyone credentials. Submit only genuine payment proof.
+  </div>
 </main>
-<footer>NEXVORA · Secure Access · Verify payment details before paying</footer>
+<footer>NEXVORA TERMINAL // USE RESPONSIBLY</footer>
 
 <script>
-const SUPABASE_URL = "https://bxyfphaytgtcodcnszya.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_qT3bI6MLd-M9nCo2n7aWDg_xxQFhmi6";
+"use strict";
 
-function showPage(pageId) {
-  document.querySelectorAll("main section").forEach(section => {
-    section.classList.add("hidden");
+/* Existing Supabase project and public publishable key */
+const SUPABASE_URL = "https://bxyfphaytgtcodcnszya.supabase.co";
+const SUPABASE_KEY = "sb_publishable_qT3bI6MLd-M9nCo2n7aWDg_xxQFhmi6";
+const LICENSE_URL = SUPABASE_URL + "/functions/v1/manage-license";
+const REQUEST_URL = SUPABASE_URL + "/functions/v1/submit-unban-request";
+
+let requestDetails = null;
+
+function show(id, visible = true) {
+  document.getElementById(id).classList.toggle("hidden", !visible);
+}
+function message(id, text, error = false) {
+  const el = document.getElementById(id);
+  el.textContent = text;
+  el.classList.toggle("red", error);
+}
+function headers() {
+  return {
+    "Content-Type": "application/json",
+    "apikey": SUPABASE_KEY,
+    "Authorization": "Bearer " + SUPABASE_KEY
+  };
+}
+async function postJSON(url, payload) {
+  const response = await fetch(url, {
+    method: "POST",
+    headers: headers(),
+    body: JSON.stringify(payload)
   });
-  const page = document.getElementById(pageId);
-  if (page) page.classList.remove("hidden");
-  window.scrollTo({top:0,behavior:"smooth"});
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok || data.success === false) {
+    throw new Error(data.error || data.message || "Request failed (" + response.status + ")");
+  }
+  return data;
 }
 
 async function validateLicense() {
-  const key = document.getElementById("licenseKey").value.trim();
-  const message = document.getElementById("loginMessage");
-  const button = document.getElementById("validateBtn");
-
-  message.className = "";
+  const key = document.getElementById("license").value.trim();
   if (!key) {
-    message.textContent = "Please enter your license key.";
-    message.className = "error";
+    message("licenseMsg", "Enter your license key first.", true);
+    return;
+  }
+  const btn = document.getElementById("licenseBtn");
+  btn.disabled = true;
+  message("licenseMsg", "Validating license...");
+  try {
+    /*
+      Keep this action and response handling aligned with the
+      existing manage-license Edge Function.
+    */
+    const data = await postJSON(LICENSE_URL, {
+      action: "validate",
+      license_key: key
+    });
+    if (data.valid === true || data.license_valid === true ||
+        data.status === "valid" || data.success === true) {
+      message("licenseMsg", "LICENSE ACCEPTED. Access enabled.");
+      show("payment199");
+      show("detailsPanel");
+      document.getElementById("licensePanel").classList.add("hidden");
+    } else {
+      throw new Error(data.message || "License is invalid or inactive.");
+    }
+  } catch (err) {
+    message("licenseMsg", err.message || "License validation failed.", true);
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+function copyUPI(id) {
+  const value = document.getElementById(id).value;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(value)
+      .then(() => alert("UPI ID copied: " + value))
+      .catch(() => prompt("Copy this UPI ID:", value));
+  } else {
+    prompt("Copy this UPI ID:", value);
+  }
+}
+
+document.getElementById("detailsForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const name = document.getElementById("customerName").value.trim();
+  const uid = document.getElementById("playerUid").value.trim();
+  const region = document.getElementById("playerRegion").value;
+  const issue = document.getElementById("issueDetails").value.trim();
+
+  if (!/^[0-9]{5,30}$/.test(uid)) {
+    message("detailsMsg", "UID must contain 5–30 digits.", true);
+    return;
+  }
+  if (!name || !region) {
+    message("detailsMsg", "Please complete all required fields.", true);
+    return;
+  }
+  requestDetails = {
+    customer_name: name,
+    player_uid: uid,
+    player_region: region,
+    issue_details: issue
+  };
+  show("payment399");
+  message("detailsMsg", "Details saved for this page session. Complete payment and submit proof.");
+  document.getElementById("payment399").scrollIntoView({behavior:"smooth"});
+});
+
+document.getElementById("proofForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+  if (!requestDetails) {
+    message("submitMsg", "Complete player details first.", true);
     return;
   }
 
-  button.disabled = true;
-  button.textContent = "Verifying...";
-  message.textContent = "";
+  const utr = document.getElementById("utr").value.trim();
+  const file = document.getElementById("screenshot").files[0];
+  if (utr.length < 6) {
+    message("submitMsg", "Enter a valid transaction reference.", true);
+    return;
+  }
+  if (!file) {
+    message("submitMsg", "Select your payment screenshot.", true);
+    return;
+  }
+  const allowed = ["image/jpeg", "image/png", "image/webp"];
+  if (!allowed.includes(file.type)) {
+    message("submitMsg", "Use a JPEG, PNG, or WEBP image.", true);
+    return;
+  }
+  if (file.size > 3.5 * 1024 * 1024) {
+    message("submitMsg", "Screenshot must be under 3.5 MB.", true);
+    return;
+  }
+
+  const btn = document.getElementById("submitBtn");
+  btn.disabled = true;
+  message("submitMsg", "Uploading proof and submitting request...");
 
   try {
-    const response = await fetch(`${SUPABASE_URL}/functions/v1/manage-license`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "apikey": SUPABASE_ANON_KEY
-      },
-      body: JSON.stringify({action:"validate", key:key})
+    const base64 = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = () => reject(new Error("Could not read screenshot."));
+      reader.readAsDataURL(file);
     });
 
-    const data = await response.json().catch(() => ({}));
+    const data = await postJSON(REQUEST_URL, {
+      ...requestDetails,
+      action: "submit",
+      utr: utr,
+      screenshot_base64: base64,
+      screenshot_mime: file.type
+    });
 
-    if (!response.ok) {
-      throw new Error(data.message || data.error || "Validation service is unavailable.");
-    }
-
-    if (data.valid === true || data.success === true || data.status === "valid") {
-      message.textContent = "License verified.";
-      message.className = "success";
-      setTimeout(() => showPage("details"), 450);
+    const token = data.tracking_token ||
+      (data.request && data.request.tracking_token) || "";
+    if (token) {
+      document.getElementById("trackingToken").value = token;
+      document.getElementById("refundToken").value = token;
+      message("submitMsg", "Request submitted. Save this tracking token: " + token +
+        ". Payment verification and request review are pending.");
     } else {
-      message.textContent = data.message || data.error || "Invalid or inactive license key.";
-      message.className = "error";
+      message("submitMsg", "Request submitted for review. Save any tracking details returned by support.");
     }
-  } catch (error) {
-    message.textContent = "Could not verify the key. Check your connection and try again.";
-    message.className = "error";
+    show("trackingPanel");
+    document.getElementById("trackingPanel").scrollIntoView({behavior:"smooth"});
+  } catch (err) {
+    message("submitMsg", err.message || "Submission failed. Please try again.", true);
   } finally {
-    button.disabled = false;
-    button.textContent = "Verify License";
+    btn.disabled = false;
   }
-}
-
-async function copyUPI() {
-  const upi = "jinwoo40054@kphdfc";
-  try {
-    await navigator.clipboard.writeText(upi);
-    alert("UPI ID copied: " + upi);
-  } catch (e) {
-    prompt("Copy this UPI ID:", upi);
-  }
-}
-
-document.getElementById("detailsForm").addEventListener("submit", function(event) {
-  event.preventDefault();
-  showPage("payment399");
 });
+
+async function checkStatus() {
+  const token = document.getElementById("trackingToken").value.trim();
+  if (!token) {
+    message("trackingMsg", "Enter your tracking token.", true);
+    return;
+  }
+  message("trackingMsg", "Checking request status...");
+  try {
+    const data = await postJSON(REQUEST_URL, {
+      action: "status",
+      tracking_token: token
+    });
+    const request = data.request || data;
+    const status = request.status || "Status not provided";
+    const payment = request.payment_status || "Not provided";
+    message("trackingMsg", "REQUEST STATUS: " + status +
+      " | PAYMENT STATUS: " + payment);
+  } catch (err) {
+    message("trackingMsg", err.message || "Could not check status.", true);
+  }
+}
+
+async function requestRefund() {
+  const token = document.getElementById("refundToken").value.trim();
+  const upi = document.getElementById("refundUpi").value.trim();
+  if (!token || !upi || !upi.includes("@")) {
+    message("refundMsg", "Enter a tracking token and valid UPI ID.", true);
+    return;
+  }
+  message("refundMsg", "Submitting refund request...");
+  try {
+    const data = await postJSON(REQUEST_URL, {
+      action: "refund",
+      tracking_token: token,
+      refund_upi_id: upi
+    });
+    message("refundMsg", data.message || "Refund request submitted for review.");
+  } catch (err) {
+    message("refundMsg", err.message || "Refund request failed.", true);
+  }
+}
 </script>
 </body>
-</html>
+</html>                                                            </html>
+  
