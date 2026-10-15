@@ -3,317 +3,263 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#030806">
-<title>NEXVORA | Access Terminal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050807">
+<title>NEXVORA | Secure Access</title>
 <style>
-:root{--g:#8cffad;--g2:#32ff75;--bg:#030806;--line:#235637;--muted:#a0c5ad}
+:root {
+  --bg:#050807;
+  --panel:#0b1210;
+  --green:#39ff88;
+  --green2:#16c765;
+  --text:#eafff1;
+  --muted:#9ab2a4;
+  --border:rgba(57,255,136,.28);
+  --red:#ff6b6b;
+}
 *{box-sizing:border-box}
-body{margin:0;padding:14px 12px;background:radial-gradient(ellipse at top,#12351d,#030806 65%);color:var(--g);font:14px "Courier New",monospace;min-height:100vh}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.07;background:repeating-linear-gradient(0deg,transparent 0 3px,#57ff8a 4px)}
-main{max-width:700px;margin:auto;position:relative}
-header{text-align:center;padding:24px 5px}
-.logo{font-size:clamp(27px,7vw,43px);font-weight:bold;letter-spacing:5px;text-shadow:0 0 8px var(--g),0 0 25px #21ff65}
-.tag{margin-top:9px;font-size:10px;letter-spacing:2px;color:#b8ffca}
-.panel{border:1px solid var(--line);background:#061009f5;padding:clamp(15px,4vw,23px);margin:14px 0;box-shadow:0 0 24px #00ff3710;animation:boot .35s ease both}
-@keyframes boot{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-h1{font-size:17px;letter-spacing:1px}
-p{color:var(--muted);line-height:1.7}
-label{display:block;margin:16px 0 7px;color:var(--g)}
-input,select{width:100%;padding:12px;color:var(--g);background:#020603;border:1px solid var(--line);border-radius:2px;font:inherit}
-option{background:#07130c}
-input:focus,select:focus{outline:1px solid var(--g);box-shadow:0 0 12px #35ff7040}
-button,.btn{display:block;width:100%;padding:13px;margin-top:12px;background:var(--g);color:#031007;border:1px solid var(--g);font:bold 13px "Courier New",monospace;text-align:center;text-decoration:none;cursor:pointer;letter-spacing:1px}
-button.secondary,.btn.secondary{background:transparent;color:var(--g)}
-button:disabled{opacity:.5;cursor:wait}
-.terminal{margin-top:14px;padding:13px;border:1px solid var(--line);background:#020503;min-height:44px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.7;color:var(--g)}
-.notice{border-left:3px solid var(--g);padding:12px;background:#0b2011;color:#d1f3da;line-height:1.7}
+body{
+  margin:0;min-height:100vh;padding:22px 14px;
+  background:radial-gradient(ellipse at top,#10281b 0%,#050807 58%);
+  color:var(--text);font-family:Arial,Helvetica,sans-serif;
+}
+header{text-align:center;margin:8px auto 24px}
+.logo{font-size:30px;font-weight:900;letter-spacing:5px;color:var(--green)}
+.tag{color:var(--muted);font-size:11px;letter-spacing:3px;margin-top:7px}
+.container{max-width:510px;margin:auto}
+.card{
+  background:linear-gradient(145deg,rgba(13,25,19,.98),rgba(5,10,8,.98));
+  border:1px solid var(--border);border-radius:17px;padding:23px;
+  box-shadow:0 0 28px rgba(57,255,136,.07);
+}
+h1{font-size:23px;margin:0 0 10px}
+h2{font-size:19px;margin:0 0 13px}
+p{line-height:1.55;color:var(--muted);font-size:14px}
+label{display:block;font-size:12px;color:#c6e9d3;margin:15px 0 7px}
+input,select,textarea{
+  width:100%;padding:13px;background:#050a07;color:white;
+  border:1px solid #294b36;border-radius:9px;outline:none;font-size:14px;
+}
+input:focus,select:focus,textarea:focus{border-color:var(--green)}
+button,.button{
+  display:block;width:100%;padding:13px 14px;margin-top:12px;
+  background:var(--green);color:#041108;border:0;border-radius:9px;
+  font-weight:800;font-size:14px;text-align:center;text-decoration:none;
+  cursor:pointer;
+}
+button.secondary,.button.secondary{
+  background:transparent;color:var(--green);border:1px solid var(--border);
+}
+button:disabled{opacity:.5;cursor:not-allowed}
 .hidden{display:none!important}
-.price{font-size:clamp(30px,8vw,38px);font-weight:bold;text-shadow:0 0 12px var(--g);margin:18px 0}
-.small{font-size:11px;color:#91b39c}
-.qr-wrap{background:#fff;padding:10px;width:min(100%,330px);margin:18px auto;text-align:center}
-.qr{display:block;width:100%;height:auto;object-fit:contain}
-.qr-caption{color:#333;font:12px Arial,sans-serif;margin:8px 0 0}
-footer{text-align:center;color:#6d9c7b;font-size:10px;padding:20px;letter-spacing:2px}
-.pill{display:inline-block;border:1px solid var(--line);padding:6px 9px;font-size:10px;letter-spacing:1px;margin-bottom:8px}
-hr{border:0;border-top:1px solid var(--line);margin:20px 0}
+.notice{
+  padding:12px;border-radius:9px;background:#0c1d13;
+  border:1px solid var(--border);font-size:13px;line-height:1.5;margin-top:14px;
+}
+.warning{border-color:#765e27;background:#201a0a;color:#ffe5a3}
+.error{color:#ff8585;font-size:13px;margin-top:10px}
+.success{color:var(--green);font-size:13px;margin-top:10px}
+.qr{
+  width:min(100%,280px);aspect-ratio:1;object-fit:contain;display:block;
+  margin:18px auto;background:white;border-radius:10px;padding:8px;
+}
+.amount{font-size:35px;font-weight:900;color:var(--green);text-align:center;margin:12px 0}
+.upi{text-align:center;overflow-wrap:anywhere;color:#d9ffe5}
+.small{text-align:center;font-size:12px;color:var(--muted)}
+hr{border:0;border-top:1px solid var(--border);margin:19px 0}
+.steps{padding-left:20px;color:#d7e8dc;font-size:14px;line-height:1.8}
+.pulse{animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(57,255,136,.15)}50%{box-shadow:0 0 22px 3px rgba(57,255,136,.18)}}
+footer{text-align:center;font-size:11px;color:#6f8b7b;margin:20px 0}
 </style>
 </head>
 <body>
-<main>
 <header>
- <div class="logo">NEXVORA</div>
- <div class="tag">[ CYBERPUNK ACCESS TERMINAL ]</div>
- <div class="tag">LICENSE ACCESS • SUPPORT INFORMATION</div>
+  <div class="logo">NEXVORA</div>
+  <div class="tag">SECURE ACCESS SYSTEM</div>
 </header>
 
-<!-- MAIN ACCESS PAGE -->
-<section id="login" class="panel">
- <span class="pill">SECURE ACCESS</span>
- <h1>01 // LICENSE AUTHENTICATION</h1>
- <p>Enter your existing access key to continue to the support-preparation service.</p>
- <label for="key">ACCESS KEY</label>
- <input id="key" autocomplete="off" placeholder="Enter license key">
- <button id="verifyKey">VERIFY ACCESS KEY</button>
- <div id="loginMsg" class="terminal" role="status">SYSTEM READY_</div>
- <hr>
- <h1>GET A NEW LICENSE KEY</h1>
- <p>Purchase the ₹199 license and continue through the Telegram bot for manual payment verification.</p>
- <button id="getKey">GET LICENSE KEY — ₹199</button>
- <p class="small">NEXVORA is an independent service and is not an official Garena website.</p>
-</section>
+<main class="container">
 
-<!-- ₹199 PAYMENT -->
-<section id="payment199" class="panel hidden">
- <span class="pill">LICENSE PURCHASE</span>
- <h1>02 // LICENSE PAYMENT</h1>
- <div class="price">₹199 <span class="small">INR</span></div>
- <div class="notice">Pay only ₹199. Check the recipient and amount in your UPI app before confirming. A key is issued only after the administrator verifies the payment.</div>
+  <!-- LOGIN -->
+  <section id="login" class="card">
+    <h1>Access Portal</h1>
+    <p>Enter your license key to continue. If you don't have a key, purchase one below.</p>
+    <label for="licenseKey">License Key</label>
+    <input id="licenseKey" type="text" placeholder="Enter your license key" autocomplete="off">
+    <button id="validateBtn" onclick="validateLicense()">Verify License</button>
+    <div id="loginMessage" aria-live="polite"></div>
+    <hr>
+    <div class="notice">
+      <strong>New user?</strong><br>
+      Get a license key for ₹199. Payment verification and key issuance are handled through the support bot.
+    </div>
+    <button onclick="showPage('payment199')">Get License Key — ₹199</button>
+  </section>
 
- <h1>SCAN THE ₹199 QR</h1>
- <div class="qr-wrap">
-  <img class="qr" src="/payment%20-199-qr.png" alt="₹199 payment QR"
-       onerror="this.classList.add('hidden');document.getElementById('qr199Error').classList.remove('hidden')">
-  <p class="qr-caption">NEXVORA • ₹199</p>
- </div>
- <div id="qr199Error" class="notice hidden">₹199 QR could not load. Check the filename and deployed file path in GitHub.</div>
+  <!-- 199 PAYMENT -->
+  <section id="payment199" class="card hidden">
+    <h1>License Key Payment</h1>
+    <p class="small">Scan this QR code or open your UPI app using the payment button below.</p>
+    <div class="amount">₹199</div>
+    <img class="qr" src="https://raw.githubusercontent.com/sslive965-cmd/free-fire-unban-official/refs/heads/main/payment-199-qr.png" alt="₹199 license payment QR code">
+    <div class="upi">UPI ID: <strong>jinwoo40054@kphdfc</strong></div>
+    <button class="secondary" onclick="copyUPI()">Copy UPI ID</button>
+    <a class="button" href="upi://pay?pa=jinwoo40054%40kphdfc&amp;pn=NEXVORA&amp;am=199.00&amp;cu=INR&amp;tn=NEXVORA%20License%20Key" >Pay ₹199 via UPI App</a>
+    <div class="notice warning">Pay exactly ₹199. Keep your UTR/reference number and payment screenshot ready. Sending payment proof does not mean payment is already verified.</div>
+    <button onclick="showPage('licenseInstructions')">I Have Paid — Continue</button>
+    <button class="secondary" onclick="showPage('login')">Back to Login</button>
+  </section>
 
- <label for="upi199">UPI ID</label>
- <input id="upi199" value="jinwoo40054@kphdfc" readonly>
- <button class="secondary" id="copy199">COPY UPI ID</button>
- <a class="btn" href="upi://pay?pa=jinwoo40054%40kphdfc&amp;pn=NEXVORA&amp;am=199.00&amp;cu=INR">PAY ₹199 VIA UPI APP</a>
- <p class="small">UPI apps may vary by device. This website cannot independently confirm that payment was received.</p>
- <button id="done199">PAYMENT DONE — CONTINUE</button>
- <button class="secondary" id="back199">← BACK TO ACCESS</button>
-</section>
+  <!-- AFTER 199 PAYMENT -->
+  <section id="licenseInstructions" class="card hidden pulse">
+    <h1>Payment Instructions</h1>
+    <p>Continue in the official NEXVORA support bot to submit your payment details and request your license key.</p>
+    <div class="notice">
+      <strong>Next steps</strong>
+      <ol class="steps">
+        <li>Open the NEXVORA Support Bot.</li>
+        <li>Choose the Get Key option.</li>
+        <li>Send your payment screenshot and UTR/reference number.</li>
+        <li>Wait for manual payment verification.</li>
+        <li>Your key is sent after the payment is verified by the admin.</li>
+      </ol>
+    </div>
+    <a class="button" href="https://t.me/NEXVORA_Support_Bot" target="_blank" rel="noopener noreferrer">Continue to Get Key on Telegram</a>
+    <button class="secondary" onclick="showPage('payment199')">Back to ₹199 Payment</button>
+    <button class="secondary" onclick="showPage('login')">Back to Login</button>
+  </section>
 
-<!-- ₹199 INSTRUCTIONS -->
-<section id="instructions199" class="panel hidden">
- <span class="pill">NEXT STEPS</span>
- <h1>03 // GET YOUR LICENSE KEY</h1>
- <div class="notice">
-  <strong>PAYMENT SUBMISSION</strong>
-  <p>1. Open the NEXVORA Telegram bot.</p>
-  <p>2. Tap <strong>Get Key</strong>.</p>
-  <p>3. Send your payment screenshot when requested.</p>
-  <p>4. Send the UTR/reference number.</p>
-  <p>5. Wait while the administrator manually checks your payment.</p>
-  <p>6. After successful verification, the bot sends your license key directly to you.</p>
- </div>
- <button id="continueBot">CONTINUE TO GET KEY →</button>
- <button class="secondary" id="backTo199">← BACK TO PAYMENT</button>
- <button class="secondary" id="backToLogin199">BACK TO ACCESS</button>
- <p class="small">Tapping Payment Done does not itself verify a payment or issue a key. Never share your UPI PIN or OTP.</p>
-</section>
+  <!-- PLAYER DETAILS -->
+  <section id="details" class="card hidden">
+    <h1>Player Information</h1>
+    <p>Enter the requested details to continue to the ₹399 service payment page.</p>
+    <form id="detailsForm">
+      <label for="playerName">Player Name</label>
+      <input id="playerName" required maxlength="80" placeholder="Enter player name">
+      <label for="playerUID">Player UID</label>
+      <input id="playerUID" required inputmode="numeric" maxlength="30" placeholder="Enter player UID">
+      <label for="playerRegion">Region</label>
+      <select id="playerRegion" required>
+        <option value="">Select region</option>
+        <option>India</option>
+        <option>Other</option>
+      </select>
+      <label for="issueDetails">Issue Details</label>
+      <textarea id="issueDetails" rows="3" required placeholder="Describe your issue"></textarea>
+      <label for="banScreenshot">Screenshot (optional)</label>
+      <input id="banScreenshot" type="file" accept="image/*">
+      <button type="submit">Continue to ₹399 Payment</button>
+    </form>
+    <button class="secondary" onclick="showPage('login')">Back</button>
+  </section>
 
-<!-- EXISTING ₹399 PLAYER DETAILS FLOW -->
-<section id="details" class="panel hidden">
- <span class="pill">SUPPORT PREPARATION</span>
- <h1>04 // PLAYER INFORMATION</h1>
- <p>Enter accurate details. Never share passwords, OTPs or game account login credentials.</p>
- <form id="detailsForm">
-  <label for="uid">PLAYER UID</label>
-  <input id="uid" inputmode="numeric" maxlength="30" required placeholder="Player UID">
+  <!-- 399 PAYMENT -->
+  <section id="payment399" class="card hidden">
+    <h1>Service Payment</h1>
+    <p class="small">This is the separate ₹399 service payment QR.</p>
+    <div class="amount">₹399</div>
+    <img class="qr" src="https://raw.githubusercontent.com/sslive965-cmd/free-fire-unban-official/refs/heads/main/payment-399-qr.jpg" alt="₹399 service payment QR code">
+    <div class="upi">UPI ID: <strong>jinwoo40054@kphdfc</strong></div>
+    <button class="secondary" onclick="copyUPI()">Copy UPI ID</button>
+    <a class="button" href="upi://pay?pa=jinwoo40054%40kphdfc&amp;pn=NEXVORA&amp;am=399.00&amp;cu=INR&amp;tn=NEXVORA%20Service" >Pay ₹399 via UPI App</a>
+    <div class="notice warning">Check the amount before paying. This page does not automatically verify payments.</div>
+    <button onclick="showPage('proof399')">I Have Paid — Continue</button>
+    <button class="secondary" onclick="showPage('details')">Back to Details</button>
+  </section>
 
-  <label for="game">GAME NAME</label>
-  <input id="game" maxlength="100" required placeholder="Game name">
+  <!-- 399 PROOF LIMITATION -->
+  <section id="proof399" class="card hidden">
+    <h1>Payment Reference</h1>
+    <p>You can keep your reference details ready. This page is not connected to a submission backend, so anything entered here will not be sent to the admin.</p>
+    <label for="utr399">UTR / Transaction Reference</label>
+    <input id="utr399" placeholder="Enter UTR/reference number">
+    <label for="proofFile399">Payment Screenshot</label>
+    <input id="proofFile399" type="file" accept="image/*">
+    <div class="notice warning">Do not treat this form as a completed submission. Contact the service provider through their official support channel for verified submission instructions.</div>
+    <button class="secondary" onclick="showPage('payment399')">Back to ₹399 Payment</button>
+    <button class="secondary" onclick="showPage('login')">Back to Login</button>
+  </section>
 
-  <label for="original">ORIGINAL NAME</label>
-  <input id="original" maxlength="100" required placeholder="Original name">
-
-  <label for="device">DEVICE</label>
-  <select id="device" required>
-   <option value="">Select device</option>
-   <option>Android phone</option>
-   <option>iPhone</option>
-   <option>Android tablet</option>
-   <option>iPad</option>
-   <option>PC / Emulator</option>
-   <option>Other</option>
-  </select>
-
-  <label for="level">ACCOUNT LEVEL</label>
-  <input id="level" type="number" min="1" max="500" required placeholder="Game account level">
-
-  <label for="region">SERVER / REGION</label>
-  <select id="region" required>
-   <option value="">Select region</option>
-   <option>India</option>
-   <option>Bangladesh</option>
-   <option>Singapore</option>
-   <option>Middle East</option>
-   <option>Other / Unknown</option>
-  </select>
-
-  <label for="reason">REASON FOR BAN</label>
-  <select id="reason" required>
-   <option value="">Choose the truthful reason</option>
-   <option>I used hacking</option>
-   <option>I did verbal abuse</option>
-   <option>My friend used my account to cheat</option>
-   <option>An unknown person accessed my account and cheated</option>
-   <option>I do not know why my account was banned</option>
-   <option>Other</option>
-  </select>
-
-  <label for="banShot">BAN SCREENSHOT</label>
-  <input id="banShot" type="file" accept="image/*" required>
-  <p class="small">The screenshot is selected locally; this page does not upload it to a server.</p>
-  <button type="submit">PROCEED TO ₹399 PAYMENT →</button>
- </form>
- <div id="detailsLog" class="terminal hidden" aria-live="polite"></div>
- <button class="secondary" id="backFromDetails">← BACK TO ACCESS</button>
-</section>
-
-<!-- ₹399 PAYMENT -->
-<section id="payment399" class="panel hidden">
- <span class="pill">SUPPORT PREPARATION PAYMENT</span>
- <h1>05 // PAYMENT TERMINAL</h1>
- <div class="price">₹399 <span class="small">INR</span></div>
- <div class="notice">Before paying, confirm the recipient and amount in your UPI app. Payment does not guarantee that a game account will be reinstated.</div>
-
- <h1>SCAN THE ₹399 QR</h1>
- <div class="qr-wrap">
-  <img class="qr" src="/payment-399-qr.png" alt="₹399 payment QR"
-       onerror="this.classList.add('hidden');document.getElementById('qr399Error').classList.remove('hidden')">
-  <p class="qr-caption">NEXVORA • ₹399</p>
- </div>
- <div id="qr399Error" class="notice hidden">₹399 QR could not load. Check the filename and deployed file path in GitHub.</div>
-
- <label for="upi399">UPI ID</label>
- <input id="upi399" value="jinwoo40054@kphdfc" readonly>
- <button class="secondary" id="copy399">COPY UPI ID</button>
- <a class="btn" href="upi://pay?pa=jinwoo40054%40kphdfc&amp;pn=NEXVORA&amp;am=399.00&amp;cu=INR">PAY ₹399 VIA UPI APP</a>
- <p class="small">UPI app availability depends on your device. This page cannot independently confirm payment.</p>
- <button id="done399">PAYMENT DONE — CONTINUE</button>
- <button class="secondary" id="back399">← BACK TO PLAYER DETAILS</button>
-</section>
-
-<!-- ₹399 PAYMENT PROOF -->
-<section id="proof399" class="panel hidden">
- <span class="pill">PAYMENT PROOF</span>
- <h1>06 // SUBMIT PAYMENT DETAILS</h1>
- <div class="notice">Enter the transaction reference from your payment app and select your payment screenshot. Do not upload unrelated images.</div>
- <form id="proofForm399">
-  <label for="utr399">UTR / TRANSACTION REFERENCE</label>
-  <input id="utr399" maxlength="80" required placeholder="Enter transaction reference">
-  <label for="receipt399">PAYMENT SCREENSHOT</label>
-  <input id="receipt399" type="file" accept="image/*" required>
-  <button type="submit">CHECK SUBMISSION STATUS</button>
- </form>
- <div id="proofLog399" class="terminal hidden" aria-live="polite"></div>
- <p class="small">This standalone page does not send the UTR or screenshot to an administrator. Do not treat the form as a completed payment submission.</p>
- <button class="secondary" id="backProof399">← BACK TO ₹399 PAYMENT</button>
-</section>
-
-<footer>NEXVORA • INDEPENDENT SERVICE • NO UNBAN GUARANTEE</footer>
 </main>
+<footer>NEXVORA · Secure Access · Verify payment details before paying</footer>
 
 <script>
-"use strict";
-const $ = id => document.getElementById(id);
-const botURL = "https://t.me/NEXVORA_Support_Bot";
-const sectionIds = [
- "login","payment199","instructions199","details","payment399","proof399"
-];
+const SUPABASE_URL = "https://bxyfphaytgtcodcnszya.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_qT3bI6MLd-M9nCo2n7aWDg_xxQFhmi6";
 
-function show(id) {
- sectionIds.forEach(s => $(s).classList.toggle("hidden", s !== id));
- window.scrollTo({top:0,behavior:"smooth"});
+function showPage(pageId) {
+  document.querySelectorAll("main section").forEach(section => {
+    section.classList.add("hidden");
+  });
+  const page = document.getElementById(pageId);
+  if (page) page.classList.remove("hidden");
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
-async function copyValue(inputId, buttonId, originalText) {
- try {
-  await navigator.clipboard.writeText($(inputId).value);
-  $(buttonId).textContent = "UPI ID COPIED";
- } catch {
-  $(inputId).select();
-  $(buttonId).textContent = "SELECT AND COPY UPI ID";
- }
- setTimeout(() => { $(buttonId).textContent = originalText; }, 2200);
-}
+async function validateLicense() {
+  const key = document.getElementById("licenseKey").value.trim();
+  const message = document.getElementById("loginMessage");
+  const button = document.getElementById("validateBtn");
 
-/* ₹199 license purchase flow */
-$("getKey").addEventListener("click", () => show("payment199"));
-$("back199").addEventListener("click", () => show("login"));
-$("done199").addEventListener("click", () => show("instructions199"));
-$("backTo199").addEventListener("click", () => show("payment199"));
-$("backToLogin199").addEventListener("click", () => show("login"));
-$("continueBot").addEventListener("click", () => {
- window.location.href = botURL;
-});
-$("copy199").addEventListener("click", () =>
- copyValue("upi199","copy199","COPY UPI ID")
-);
-
-/* Preserve existing Supabase license-key validation */
-$("verifyKey").addEventListener("click", async () => {
- const key = $("key").value.trim();
- if (!key) {
-  $("loginMsg").textContent = "INPUT REQUIRED: ENTER ACCESS KEY_";
-  return;
- }
- $("verifyKey").disabled = true;
- $("loginMsg").textContent = "CONNECTING TO LICENSE SERVER...";
- try {
-  const r = await fetch(
-   "https://bxyfphaytgtcodcnszya.supabase.co/functions/v1/manage-license",
-   {
-    method:"POST",
-    headers:{
-     "Content-Type":"application/json",
-     "apikey":"sb_publishable_qT3bI6MLd-M9nCo2n7aWDg_xxQFhmi6"
-    },
-    body:JSON.stringify({action:"validate",key})
-   }
-  );
-  const data = await r.json();
-  if (!r.ok) throw new Error("Server request failed");
-  if (data.success === true && data.valid === true) {
-   $("loginMsg").textContent = "KEY ACCEPTED. OPENING PLAYER FORM...";
-   show("details");
-  } else {
-   $("loginMsg").textContent =
-    "ACCESS DENIED: " + (data.reason || "KEY INVALID OR UNAVAILABLE");
+  message.className = "";
+  if (!key) {
+    message.textContent = "Please enter your license key.";
+    message.className = "error";
+    return;
   }
- } catch {
-  $("loginMsg").textContent = "CONNECTION ERROR: SERVER COULD NOT VERIFY THE KEY.";
- } finally {
-  $("verifyKey").disabled = false;
- }
-});
 
-/* Existing ₹399 player information flow */
-$("detailsForm").addEventListener("submit", e => {
- e.preventDefault();
- if (!$("banShot").files[0]) return;
- $("detailsLog").classList.remove("hidden");
- $("detailsLog").textContent =
-  "Required fields checked locally. Your details and screenshot have not been uploaded.";
- setTimeout(() => show("payment399"), 700);
-});
-$("backFromDetails").addEventListener("click", () => show("login"));
-$("back399").addEventListener("click", () => show("details"));
-$("copy399").addEventListener("click", () =>
- copyValue("upi399","copy399","COPY UPI ID")
-);
-$("done399").addEventListener("click", () => show("proof399"));
-$("backProof399").addEventListener("click", () => show("payment399"));
+  button.disabled = true;
+  button.textContent = "Verifying...";
+  message.textContent = "";
 
-$("proofForm399").addEventListener("submit", e => {
- e.preventDefault();
- const utr = $("utr399").value.trim();
- const file = $("receipt399").files[0];
- const log = $("proofLog399");
- log.classList.remove("hidden");
- if (!utr || !file) {
-  log.textContent = "UTR AND PAYMENT SCREENSHOT ARE REQUIRED.";
-  return;
- }
- log.textContent =
-  "Details selected locally, but NOT SUBMITTED. Server-side submission and admin review must be connected before this can be used for real payments.";
+  try {
+    const response = await fetch(`${SUPABASE_URL}/functions/v1/manage-license`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "apikey": SUPABASE_ANON_KEY
+      },
+      body: JSON.stringify({action:"validate", key:key})
+    });
+
+    const data = await response.json().catch(() => ({}));
+
+    if (!response.ok) {
+      throw new Error(data.message || data.error || "Validation service is unavailable.");
+    }
+
+    if (data.valid === true || data.success === true || data.status === "valid") {
+      message.textContent = "License verified.";
+      message.className = "success";
+      setTimeout(() => showPage("details"), 450);
+    } else {
+      message.textContent = data.message || data.error || "Invalid or inactive license key.";
+      message.className = "error";
+    }
+  } catch (error) {
+    message.textContent = "Could not verify the key. Check your connection and try again.";
+    message.className = "error";
+  } finally {
+    button.disabled = false;
+    button.textContent = "Verify License";
+  }
+}
+
+async function copyUPI() {
+  const upi = "jinwoo40054@kphdfc";
+  try {
+    await navigator.clipboard.writeText(upi);
+    alert("UPI ID copied: " + upi);
+  } catch (e) {
+    prompt("Copy this UPI ID:", upi);
+  }
+}
+
+document.getElementById("detailsForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  showPage("payment399");
 });
 </script>
 </body>
-   </html>
- 
+</html>
