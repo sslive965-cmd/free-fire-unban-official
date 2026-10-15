@@ -97,24 +97,54 @@ footer{text-align:center;color:#62846c;font-size:11px;padding:15px}
   </div>
 </section>
  
+
 <section class="panel hidden" id="getKeyPanel">
-  <div class="panel-head">[ GET KEY ]</div>
+  <div class="panel-head">[ GET LICENSE KEY — ₹199 ]</div>
   <div class="panel-body">
-    <p>Choose how you want to get your license key.</p>
+
+    <p class="tag">STEP 1: COMPLETE YOUR PAYMENT</p>
+
+    <div class="notice">
+      Pay ₹199 using the QR code or UPI ID below.
+      After payment, tap PAYMENT DONE to continue to Telegram.
+    </div>
+
+    <img
+      class="qr"
+      src="https://raw.githubusercontent.com/sslive965-cmd/free-fire-unban-official/refs/heads/main/payment-199-qr.png"
+      alt="₹199 payment QR code"
+    >
+
+    <label for="getKeyUPI">UPI ID</label>
+    <input id="getKeyUPI" type="text"
+           value="jinwoo40054@kphdfc" readonly>
+
+    <button type="button" class="secondary"
+            onclick="copyUPI('getKeyUPI')">
+      COPY UPI ID
+    </button>
+
+    <div class="notice">
+      <strong>IMPORTANT:</strong> Payment karne ke baad hi
+      PAYMENT DONE button dabayein. Telegram bot par UTR
+      aur payment screenshot submit karna hoga.
+    </div>
 
     <a class="button"
        href="https://t.me/NEXVORA_Support_Bot"
        target="_blank"
        rel="noopener noreferrer">
-      CONTACT SUPPORT BOT
+      PAYMENT DONE — CONTINUE TO BOT
     </a>
 
     <button type="button" class="secondary"
             onclick="show('getKeyPanel', false)">
       BACK TO LICENSE
     </button>
+
   </div>
 </section>
+  
   
 
   <section class="panel hidden" id="payment199">
